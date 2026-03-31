@@ -1,0 +1,59 @@
+Basic web fundamentals
+
+1. URL => Unique resource locator : STRUCTURE
+ - https: hyper text transfer protocol secure
+ - website: facebook
+    https => meta data; data about data, security lic
+
+2. Website vs Webpage
+    Webpage : collection of different kind of tags is called webpage
+        - images, videos, audio, links, text, gifs
+    Website : combination of multiple webpages is called website.
+3. Basic Html tags
+    - formating, form, table, listing, media tag
+    - block tags, inline tags (opening & closing tags, self closing tags)
+    o & c tags: <p> fewffufeifr  wewerweur <br> werwerew </p>
+    selfC tags: <br> or <br />, <hr> or <hr />
+    hr: -------------------------------------------
+4. Web app architecture
+    1. Client / User
+    2. Server => computer
+5. tools
+    - laptop/computer, editor, browser, github desktop,
+    Editor: VS code => website development 
+    Browser: latest => recommend : Google chrome
+    Source code: Github desktop
+
+Interview question: website devlopement
+
+tech stack: 
+    html css, js, reactjs, nodejs, expressjs, mangodb/mysql
+tools: 
+    vs code, google chrome, 
+    mongodb: mongodb compass, mysql: xampp server
+
+-----
+       https://www.facebook.com/foldername/filename
+link : https://www.facebook.com/reels/usa-breakdown-gdp
+hostname: hostinger.com/.pk/.in
+hostname = hostinger => google: 172.64.153.94
+Domain: .com, .pk, .in, .mil, .gov, .uk
+.com = commercial
+.org = organization
+.pk  = pakistan
+.in  = india
+.mil = miltary
+.gov = gov.
+.uk  = United Kingdom
+
+== files ===
+document                = .docx
+power point             = .pptx
+excel                   = .xlsx
+portal document file    = .pdf
+
+tools to download: 
+    - vs code
+    - github desktop
+    - xampp
+    - google chrome
