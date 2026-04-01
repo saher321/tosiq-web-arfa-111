@@ -63,3 +63,13 @@ vs code plugins:
     2. Live Server
     3. Auto Rename Tag
     4. Material Icon Theme
+
+naming convention:
+
+    1. about-us.html
+    2. aboutUs.html
+    3. about_us.html
+    4. aboutus.html
+
+    a. about us.html
+    b. about/us.html
