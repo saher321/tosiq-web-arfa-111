@@ -1,0 +1,56 @@
+Framework
+Library
+
+* STRUCTURE - No Framework
+
+    assets
+        -> images
+        -> videos
+        -> audios
+        -> css
+        -> js
+    config > db.php
+    utils > functions();
+    uploads
+    - about.html
+    - home.html
+    - contact-us.html
+
+PHP -> OOP (Object oriented programming)
+    config 
+        -> db.php
+    classes
+        -> department.php > func()
+        -> user.php -> func()
+        -> teacher.php
+    utils
+        -> common.php
+    views -> frontend
+    DepartmentList.php
+        DepartmentList.php
+
+<code>
+db connect
+getDepartments()
+return loop
+</code>
+
+MERN :: LTS (Moduler appr.)
+    server
+        -> node_modules
+        -> config > db.js
+        -> modules
+            department
+                - department.controller.js
+                - department.model.js
+                - department.route.js
+            
+            user
+                - user.controller.js
+                - user.model.js
+                - user.route.js
+        index.js
+        .env
+        package.json
+    
+    client - Frontend
