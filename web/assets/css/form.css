@@ -1,0 +1,35 @@
+body{
+    margin: 0px; padding: 0px;
+    background-color: #EEE8F7;
+    font-size: 18px
+}
+
+.issue-form {
+    width: 500px;
+}
+
+.issue-form > .header{
+    /* width: inherit; */
+    background-color: white;
+    padding: 16px;
+    height: 100px;
+    box-shadow: 0px 0px 3px #ccc;
+    margin: 12px 0px;
+    border-radius: 8px;
+    border-top: 6px solid #5C33AE;
+}
+.issue-form > .header > div {
+    font-size: 28px;
+    font-weight: bold;
+}
+.name-field > label, .emp-id-field > label {
+    display: block;
+}
+
+.name-field, .emp-id-field, .radio-btns, .submit-btn {
+    background-color: white;
+    padding: 16px;
+    box-shadow: 0px 0px 3px #ccc;
+    margin: 12px 0px;
+    border-radius: 8px;
+}
