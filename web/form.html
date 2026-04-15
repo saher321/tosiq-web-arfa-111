@@ -1,60 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="./assets/css/form.css">
+    <link rel="stylesheet" href="./assets/css/form.css" />
 
-</head>
-<body>
-    
+  </head>
+  <body>
     <!-- 
     Login, Signup, Registration form, Servey form
     -->
-    
-    <div class="issue-form">
+
+    <div class="form-wrapper">
+      <div class="issue-form">
         <div class="header">
             <div>
                 Form
             </div>
-            <p>
-                Your feedback of assets issue is important to us
-            </p>
+            <p>Your feedback of assets issue is important to us</p>
         </div>
-        
+
         <form>
-            <div class="name-field">
-                <label>Name</label>
-                <input type="text" placeholder="Enter Employee name">
-            </div>
-            
-            <div class="emp-id-field">
-                <label>Employee ID</label>
-                <input type="text" placeholder="Enter Employee id">
-            </div>
+          <div class="name-field">
+            <label>Name</label>
+            <input type="text" placeholder="Enter Employee name" />
+          </div>
 
-            <div class="radio-btns">
-                <div>
-                    <input type="radio" name="issue">
-                    <label for="">Nework issue</label>
-                </div>
-                <div>
-                    <input type="radio" name="issue">
-                    <label for="">Wifi issue</label>
-                </div>
-                <div>
-                    <input type="radio" name="issue">
-                    <label for="">Laptop issue</label>
-                </div>
-            </div>
+          <div class="emp-id-field">
+            <label>Employee ID</label>
+            <input type="text" placeholder="Enter Employee id" />
+          </div>
 
-            <div class="submit-btn">
-                <button>Submit</button>
+          <div class="radio-btns">
+            <div>
+              <input type="radio" id="network" name="issue" />
+              <label for="network">Nework issue</label>
             </div>
+            <div>
+              <input type="radio" id="wifi" name="issue" />
+              <label for="wifi">Wifi issue</label>
+            </div>
+            <div>
+              <input type="radio" id="laptop" name="issue" />
+              <label for="laptop">Laptop issue</label>
+            </div>
+          </div>
+
+          <div class="priority-field">
+            <label>Priority</label>
+            <select>
+              <option>Choose Priority</option>
+              <option>High</option>
+              <option>Medium</option>
+              <option>Low</option>
+            </select>
+          </div>
+
+          <div class="submit-btn">
+            <button>Submit</button>
+          </div>
         </form>
+      </div>
     </div>
 
-</body>
+
+    <!-- js -->
+  </body>
 </html>

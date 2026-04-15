@@ -1,7 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 body{
     margin: 0px; padding: 0px;
     background-color: #EEE8F7;
-    font-size: 18px
+    font-size: 18px;
+    accent-color: #5C33AE;
+
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.form-wrapper {
+    display: grid;
+    place-items: center
 }
 
 .issue-form {
@@ -22,14 +35,47 @@ body{
     font-size: 28px;
     font-weight: bold;
 }
-.name-field > label, .emp-id-field > label {
+
+.name-field > label, 
+.emp-id-field > label, 
+.priority-field > label {
     display: block;
+    font-size: 14px;
 }
 
-.name-field, .emp-id-field, .radio-btns, .submit-btn {
+.radio-btns > div > label {
+    font-size: 14px;
+}
+
+.name-field > input, 
+.emp-id-field > input, 
+.priority-field > select {
+    width: calc(100% - 16px);
+    margin-top: 8px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 8px 0px;
+}
+.name-field > input:focus, 
+.emp-id-field > input:focus, 
+.priority-field > select:focus {
+    border-bottom: 1px solid #5C33AE;
+}
+.name-field, .emp-id-field, 
+.radio-btns, .priority-field, 
+.submit-btn {
     background-color: white;
     padding: 16px;
     box-shadow: 0px 0px 3px #ccc;
     margin: 12px 0px;
     border-radius: 8px;
+}
+
+.submit-btn > button {
+    background-color: #5C33AE;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    color: ghostwhite;
 }
