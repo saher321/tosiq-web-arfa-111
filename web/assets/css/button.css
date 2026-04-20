@@ -1,0 +1,23 @@
+button {
+    background-color: #462C7D;
+    color: ghostwhite;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+}
+
+.btn1:hover {
+    background-color: #251742;
+}
+
+.btn2:focus {
+    background-color: #251742;
+}
+
+.btn3:active {
+    background-color: #251742;
+}
+
+a:visited {
+    background-color: #251742;
+}
