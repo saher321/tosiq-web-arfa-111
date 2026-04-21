@@ -1,0 +1,41 @@
+body {
+    background-color: #CED4E2;
+    margin: 0px; padding: 0px;
+}
+
+.card-wrapper {
+    display: grid;
+    height: 100vh;
+    place-items: center;
+}
+
+.service {
+    background-color: white;
+    width: 250px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.content {
+    background-color: #E2DBF9;
+    padding: 8px;
+    border-radius: 4px;
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        span{
+            background-color: #D4C6FE;
+            padding: 4px 8px;
+            border-radius: 50px;
+        }
+    }
+}
+
+.footer {
+    margin: 12px;
+    display: flex;
+    justify-content: space-between;
+}
