@@ -1,0 +1,33 @@
+.parent {
+    height: 300px;
+
+    width: 500px;
+
+    border: 2px dashed red;
+
+    /* position: relative; */
+}
+
+.child {
+    position: absolute;
+    bottom: 8px; left: 8px;
+
+    height: 80px;
+    width: 80px;
+    text-wrap: no-wrap;
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+}
+
+.child2 {
+    position: absolute;
+    bottom: 8px; right: 8px;
+
+    height: 80px;
+    width: 80px;
+    text-wrap: no-wrap;
+    color: white;
+    background-color: green;
+    border-radius: 8px;
+}

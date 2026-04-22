@@ -1,0 +1,13 @@
+.card{
+    background-image: url('../images/pattern.jpg');
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+h2 {
+    padding: 12px;
+    border-radius: 4px;
+    color: white
+}
