@@ -1,0 +1,23 @@
+.name{
+    color: #333;
+    position: relative;
+}
+
+.name::before {
+    content: "";
+    height: 8px; width: 8px;
+    background: #2A7B9B;
+    background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, 
+    rgba(87, 199, 133, 1) 50%, 
+    rgba(237, 221, 83, 1) 100%);
+
+    border-radius: 50px;
+    position: absolute;
+    
+    bottom: -4px;
+    transition: .3s;
+}
+
+.name:hover::before {
+    width: 50px;
+}
