@@ -23,7 +23,7 @@
     border-left: blue 2px solid; 
     border-bottom: yellow 2px solid; 
 
-    animation: float 4s infinite linear;
+    animation: float 4s infinite;
 
     position: fixed;
     right: 4%;
