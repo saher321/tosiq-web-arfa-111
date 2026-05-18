@@ -42,3 +42,20 @@ function getSelectedData() {
         showUsers(filteredData)
     }
 }
+
+function searchByText() {
+    let searchText = document.getElementById("search_text").value
+    
+    let tbody = document.getElementById("tbody");
+    tbody.innerHTML = "";
+
+    if (searchText == "") {
+        showUsers(users);
+    } else {
+        const filteredData = users.filter((user) => 
+            user.name.toLowerCase().includes(searchText.toLowerCase()) || 
+            user.role.toLowerCase().includes(searchText.toLowerCase())
+        )
+        showUsers(filteredData)
+    }
+}
