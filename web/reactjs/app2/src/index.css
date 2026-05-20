@@ -1,0 +1,22 @@
+body{
+    background-color: #ccc;
+}
+
+.navbar-wrapper {
+    nav {
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px 12px;
+        border-radius: 12px; 
+
+
+        .links ul{
+            display: flex;
+            list-style: none;
+            padding: 0px;
+            gap: 20px;
+        }
+    }
+}
