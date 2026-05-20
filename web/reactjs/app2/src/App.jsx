@@ -1,15 +1,17 @@
 import React from 'react'
 import Navbar from './components/Navbar'
+import PageTitle from './components/PageTitle'
 
 const App = () => {
-  // const isToggle = true
   return (
     <div>
-      {/* ternary condition */}
-      {/* { isToggle ? <Navbar /> : "No navbar" } */}
       <Navbar />
       <br />
-      Home page
+      
+      <PageTitle title="Home page" subheading="Sub heading"/>
+      <PageTitle title="About page"/>
+      <PageTitle title="Contact page" subheading="Sub heading"/>
+
     </div>
   )
 }
