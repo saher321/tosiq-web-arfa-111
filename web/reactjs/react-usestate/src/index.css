@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 .active-tab:focus {
     color: black !important;
 }
