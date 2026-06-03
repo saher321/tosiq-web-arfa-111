@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ReactTabs from './components/ReactTabs'
 
 const App = () => {
   const [value, setValue] = useState("Ali")
@@ -32,6 +33,8 @@ const App = () => {
         <button onClick={inQty}>+</button>
 
       </div>
+      <hr />
+      <ReactTabs />
     </div>
   )
 }
