@@ -1,12 +1,11 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import WebLayout from '../layouts/WebLayout'
 
 const About = () => {
   return (
-    <div>
-      <Navbar />
+    <WebLayout>
       About
-    </div>
+    </WebLayout>
   )
 }
 
