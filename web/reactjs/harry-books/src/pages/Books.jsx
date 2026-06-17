@@ -5,6 +5,7 @@ import { ALL_BOOKS } from '../utils/api.js'
 import BookItem from '../components/books/BookItem.jsx'
 import { FadeLoader } from 'react-spinners'
 import * as motion from 'motion/react-client';
+import { Link } from 'react-router'
 
 const Books = () => {
   const [ books, setBooks ] = useState([])
@@ -53,7 +54,9 @@ const Books = () => {
                   }}
                   style={square}
                 >
-                  <BookItem book={book} />
+                  <Link to={`/books/${book.number}/details/`}>
+                    <BookItem book={book} />
+                  </Link>
                 </motion.div>
               </div>
             )
