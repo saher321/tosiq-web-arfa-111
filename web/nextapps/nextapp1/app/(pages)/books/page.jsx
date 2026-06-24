@@ -47,7 +47,7 @@ const page = () => {
         <div className='grid grid-cols-12 gap-3'>
           {books.map((book) => {
             return (
-              <div className='col-span-4'>
+              <div className='col-span-4 md:col-span-6 sm:col-span-6 max-w-sm:col-span-12'>
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -57,7 +57,7 @@ const page = () => {
                   }}
                   style={square}
                 >
-                  <Link href={`/books/${book.number}/details/`}>
+                  <Link href={`/books/${book.number}`}>
                     <BookItem book={book} />
                   </Link>
                 </motion.div>
