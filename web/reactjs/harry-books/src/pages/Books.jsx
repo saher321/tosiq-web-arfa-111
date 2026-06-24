@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 import WebLayout from '../layouts/WebLayout'
 import axios from 'axios'
 import { ALL_BOOKS } from '../utils/api.js'
@@ -6,6 +6,7 @@ import BookItem from '../components/books/BookItem.jsx'
 import { FadeLoader } from 'react-spinners'
 import * as motion from 'motion/react-client';
 import { Link } from 'react-router'
+import { useEffect, useState } from 'react'
 
 const Books = () => {
   const [ books, setBooks ] = useState([])

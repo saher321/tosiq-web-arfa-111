@@ -1,0 +1,1 @@
+export const ALL_BOOKS = "https://potterapi-fedeperin.vercel.app/en/books"

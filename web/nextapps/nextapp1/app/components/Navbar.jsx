@@ -9,6 +9,7 @@ const Navbar = () => {
   console.log(path)
   const urls = [
     {path: '/', text: "Home"},
+    {path: '/books', text: "Books"},
     {path: '/about-us', text: "About"},
     {path: '/contact-us', text: "Contact"},
   ]
