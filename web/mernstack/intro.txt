@@ -1,0 +1,68 @@
+Mern stack
+
+DB mongodb
+
+1 -> CRUD API (Create, Delete, Update, Read)
+Read :: get
+Create:: post
+Delete:: delete
+Update:: put/patch
+2 -> authentication 
+    - login
+    - signup
+    - forgot password
+    - otp
+    - emailing
+
+3 -> integrating frontend (nextjs)
+
+4 -> project (frontend-backend + mongodb)
+
+
+
+Pre-req
+
+1 - html, css, js (react/nextjs)
+2 - nodejs (RUNTIME)
+3 - change policy (Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser)
+3 - mongodb compass (community version)
+*******************************************
+
+server (mvc)
+    -> index.js
+    -> utils
+        -> common.js
+    -> controllers
+        -> user.controller.js
+    -> models
+        -> user.model.js
+    -> routes
+        -> user.route.js
+    -> middlewares
+        -> authMiddleware.js
+    -> config
+        -> db.js
+
+
+server (MVC - module based structure)
+
+    config
+        -> db.js
+    index.js
+    modules
+        product
+            -> product.controller.js
+            -> product.model.js
+            -> product.route.js
+        user
+            -> user.controller.js
+            -> user.model.js
+            -> user.route.js
+    middlewares
+        -> authMiddleware.js
+    utils
+        -> common.js
+
+
+
+
