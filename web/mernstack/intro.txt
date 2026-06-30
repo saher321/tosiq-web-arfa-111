@@ -1,7 +1,9 @@
 Mern stack
 
-DB mongodb
+DB:  mongodb
 
+
+delete: http://localhost:5000/user/1
 1 -> CRUD API (Create, Delete, Update, Read)
 Read :: get
 Create:: post
@@ -26,6 +28,8 @@ Pre-req
 2 - nodejs (RUNTIME)
 3 - change policy (Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser)
 3 - mongodb compass (community version)
+    - https://www.mongodb.com/try/download/community
+4 - mongodb atlas (alt)
 *******************************************
 
 server (mvc)
