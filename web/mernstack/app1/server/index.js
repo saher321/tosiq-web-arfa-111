@@ -1,10 +1,14 @@
+// express, nodemon, mongoose, nanoid, nodemailer, dotenv, cors
+
+// Pixel 7 pro : 11223344
 import express from 'express'
 
 const app = express();
 
 // http://localhost:5000/
-const colors = [ "Purple", "Orange", "Brown", "Yellow", "Red"]
+const colors = [ "White", "Black", "Brown", "Yellow", "Red"]
 
+// http://localhost:5000/colors
 app.get('/colors', (req, res) => {
   return res.send({
     status: true,
