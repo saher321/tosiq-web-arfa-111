@@ -1,27 +1,26 @@
-// express, nodemon, mongoose, nanoid, nodemailer, dotenv, cors
+// ******* PKGS *******
+// express    => run and create projects and urls,
+// nodemon    => auto restart server/backend, 
+// mongoose   => db manupulation, 
+// nanoid     => random string generate, 
+// nodemailer => for emails, 
+// dotenv     => for accessing secrete details, 
+// cors       => cross plateform data access
+// bcryptjs   => password enc/dec
+// jsonwebtoken => authentication
+// multer     => files uploading
 
-// Pixel 7 pro : 11223344
 import express from 'express'
+import colorsRouter from './routes/colors.route.js';
 
 const app = express();
+const PORT = 5000
+const PREFIXV1 = '/v1'
 
-// http://localhost:5000/
-const colors = [ "White", "Black", "Brown", "Yellow", "Red"]
+// getting all colors:
+// http://localhost:5000/v1/colors
+app.use(PREFIXV1 , colorsRouter)
 
-// http://localhost:5000/colors
-app.get('/colors', (req, res) => {
-  return res.send({
-    status: true,
-    colors
-  })
-})
-app.get('/', (req, res) => {
-  return res.send({
-    status: true,
-    message: "Server is running..."
-  })
-})
-
-app.listen(5000, () => {
-  console.log("Server is started http://localhost:"+ 5000 )
+app.listen(PORT, () => {
+  console.log(`Server is started http://localhost:${PORT}` )
 })
