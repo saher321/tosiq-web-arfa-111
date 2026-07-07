@@ -3,6 +3,7 @@ const statuses = [
     "Inactive",
     "Pending",
     "Processing",
+    "Completed",
     "Cancelled",
     "Dispatched",
     "Delivered",
