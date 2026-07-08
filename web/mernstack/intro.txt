@@ -70,3 +70,22 @@ server (MVC - module based structure)
 
 
 
+*******************************
+    DISPLAYING USER INFORMATION ON FRONT SIDE
+        -> user dummy data
+        -> react-spinners
+        -> creating ui and displaying data > tailwindcss
+        -> on backendside: dotenv
+
+*********************************
+User app
+PKGS: (npm i  pkg_name)
+    - Frontend
+        -> axios
+        -> react-spinners
+        -> react-router
+    - Backend
+        -> express
+        -> nodemon
+        -> cors
+        -> dotenv
