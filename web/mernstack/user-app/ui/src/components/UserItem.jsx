@@ -19,8 +19,8 @@ const UserItem = ({ user }) => {
             {user.university}
         </div>
         <div className='mt-3 bg-gray-100 p-2 rounded'>
-            <h1 className='text-[20px] font-bold mb-2'>
-                <FaRegUser />
+            <h1 className='font-bold mb-2'>
+                Contact information
             </h1>
             <div>
                 <div className='flex items-center gap-2 bg-gray-200 border border-gray-400 rounded-sm p-1 text-xs mb-1'>
