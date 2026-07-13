@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import axios from "axios"
 import { USER_API_URL } from '../utils/api.js'
 import UserItem from '../components/UserItem.jsx'
+import WebLayout from '../layouts/WebLayout.jsx'
 
 const Users = () => {
   const [users, setUsers] = useState([])
@@ -26,12 +27,10 @@ const Users = () => {
   }, [])
 
   return (
-    <div>
-      <Navbar />
-      <div className='mx-6'>
-        <div className="grid grid-cols-12 gap-3">
-          {
-            users.length == 0 ? 
+    <WebLayout>
+      <div className="grid grid-cols-12 gap-3">
+        {
+          users.length == 0 ?
             <div>No records</div> :
             users.map((user, i) => {
               return (
@@ -40,10 +39,9 @@ const Users = () => {
                 </div>
               )
             })
-          }
-        </div>
+        }
       </div>
-    </div>
+    </WebLayout>
   )
 }
 

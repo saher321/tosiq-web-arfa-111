@@ -1,14 +1,14 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import WebLayout from '../layouts/WebLayout'
 
 const Home = () => {
   return (
-    <div>
-      <Navbar />
-      <div className='mx-6'>
+    <WebLayout>
+      <div>
         Home
       </div>
-    </div>
+    </WebLayout>
   )
 }
 

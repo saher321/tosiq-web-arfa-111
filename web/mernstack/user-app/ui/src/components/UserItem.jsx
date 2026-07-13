@@ -1,4 +1,7 @@
 import React from 'react'
+import { MdOutlineAlternateEmail, MdPhone } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+import { Link } from 'react-router';
 
 const UserItem = ({ user }) => {
   return (
@@ -15,14 +18,24 @@ const UserItem = ({ user }) => {
         <div className='mt-3'>
             {user.university}
         </div>
-        <div className='mt-3'>
-            <h1 className='text-sm font-bold'>
-                Hair
+        <div className='mt-3 bg-gray-100 p-2 rounded'>
+            <h1 className='text-[20px] font-bold mb-2'>
+                <FaRegUser />
             </h1>
-            <div className='flex gap-2'>
-                <span className='bg-gray-200 border border-gray-400 rounded-sm px-1 text-xs'>{user.hair.color}</span>
-                <span className='bg-gray-200 border border-gray-400 rounded-sm px-1 text-xs'>{user.hair.type}</span>
+            <div>
+                <div className='flex items-center gap-2 bg-gray-200 border border-gray-400 rounded-sm p-1 text-xs mb-1'>
+                    <MdOutlineAlternateEmail className='-mt-[-3px]' /> <span>{user.email}</span>
+                </div>
+                <div className='flex items-center gap-2 bg-gray-200 border border-gray-400 rounded-sm p-1 text-xs mb-1'>
+                    <MdPhone className='-mt-[-3px]' /> <span>{user.phone}</span>
+                </div>
             </div>
+        </div>
+
+        <hr className='my-3 text-gray-300' />
+        
+        <div className='grid place-items-end'>
+            <Link to={`/users/${user.id}`} className="bg-gray-950 text-gray-50 px-3 py-1 rounded">More info</Link>
         </div>
     </div>
   )
