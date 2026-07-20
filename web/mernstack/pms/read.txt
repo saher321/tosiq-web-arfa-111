@@ -1,0 +1,31 @@
+Project management system
+
+Frontend (ui)
+    => Accounts
+    => Team
+        > reactjs files and folder
+        -> Authentication
+            - Login, Signup, ForgotPassword, ResetPassword
+        -> Customers
+        -> Projects
+        -> Assignees
+        -> Tasks
+        -> Notes
+
+Backend (moduler structure)
+    -> Authentication (Login, signup, emailing, otp, forgotpassword)
+    -> Teams
+        -> Customer
+            -> id, name, contact, email, description
+        -> Project
+            -> id, customer_id, title
+        -> Task
+            -> id, project_id, title, description
+        -> Notes
+            -> id, user_id, title, details
+
+Resources
+    -> ui
+        - axios, loader, router, tailwindcss, uilibrary, any other
+    -> server
+        - express, nodemon, dotenv, mongoose, cors, nodemailer, nanoid (34564312), bcryptjs, jsonwebtoken, multer
