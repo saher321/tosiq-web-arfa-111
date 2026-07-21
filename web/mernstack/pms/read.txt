@@ -13,7 +13,7 @@ Frontend (ui)
         -> Notes
 
 Backend (moduler structure)
-    -> Authentication (Login, signup, emailing, otp, forgotpassword)
+    -> Authentication (Login, signup, emailing, otp, forgotpassword), Users
     -> Teams
         -> Customer
             -> id, name, contact, email, description
