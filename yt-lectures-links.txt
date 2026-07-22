@@ -9,3 +9,6 @@
 
 21 July, 2026 (db connection)
 	- https://www.youtube.com/watch?v=4mfkuCnrtHs
+
+22 jULY, 2026 (showing data from db)
+	- https://www.youtube.com/watch?v=4x79BVFO1WY
