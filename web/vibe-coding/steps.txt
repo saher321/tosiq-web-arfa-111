@@ -1,0 +1,16 @@
+https://realestatetest-indol.vercel.app/
+Deployement (Free)
+Step 1
+	-> Create repo in github
+Step 2
+	-> Copy all cmds 1 after 1
+		- git init
+		- git add README.md
+		- git commit -m "first commit"
+		- git branch -M main
+		- git remote add origin https://github.com/saher321/tosiq-real-estate-111.git
+		- git push -u origin main
+Step 3
+	-> Go to vercel website and create an account using Github
+Step 4
+	-> Create project and import repo from github then deploye this
