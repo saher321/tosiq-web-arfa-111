@@ -45,7 +45,7 @@ const Register = () => {
                     </div>
 
                     <div className='col-span-6'>
-                        <Button title="Register" className="text-center px-5 py-3 text-white rounded bg-purple-600 texzt-xl font-bold" />
+                        <Button title="Register" className="transition hover:bg-purple-700 hover:shadow-lg cursor-pointer text-center px-5 py-3 text-white rounded bg-purple-600 texzt-xl font-bold" />
                     </div>
                 </div>
             </form>
