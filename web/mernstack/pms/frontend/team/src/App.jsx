@@ -1,37 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import axios from  'axios'
-import { ALL_USER_API } from './utils/api.js'
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router'
+import Register from './pages/auth/Register'
+import Login from './pages/auth/Login'
 
 const App = () => {
-  const [ users, setUsers ] = useState([])
-
-  const getAllUsers = async () => {
-    try {
-      const response = await axios.get(ALL_USER_API)
-      if (response.data.status == true) {
-        setUsers(response.data.users)
-      } else {
-        console.log(response.data.message)
-      }
-    } catch (error) {
-      console.error("ERROR:", error)
-    }
-  }
-
-  useEffect(() => {
-    getAllUsers()
-  }, [])
-
   return (
-    <div>
-      {
-        users.map((user, i) => {
-          return (
-            <div key={i}>{user.name}, {user.email}</div>
-          )
-        })
-      }
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/auth/register' element={<Register />}/>
+        <Route path='/auth/login' element={<Login />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
