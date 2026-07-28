@@ -3,19 +3,23 @@ import mongoose, { Schema } from "mongoose";
 const userSchema = new mongoose.Schema({
     fullName: {
         type: String,
-        required: true
+        required: true,
+        trim: true // => John        Mathew :: John Mathew
     },
     email: {
         type: String,
         required: true,
+        unique: true
     },
     password: {
         type: String,
         required: true,
+        // minlength: 5
     },
     role: {
         type: String,
-        required: true
+        enum: ["pm", "emp"],
+        default: "emp"
     },
     otp: {
         type: String,

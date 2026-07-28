@@ -12,3 +12,6 @@
 
 22 jULY, 2026 (showing data from db)
 	- https://www.youtube.com/watch?v=4x79BVFO1WY
+
+28 July, 2026 (Signup backend and login)
+	- https://www.youtube.com/watch?v=Ef3az0Y_dxk

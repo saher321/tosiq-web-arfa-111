@@ -15,6 +15,7 @@ dotenv.config()
 app.use(express.json())
 app.use(cors())
 
+// http://localhost:5000/api/v1/auth/register
 // http://localhost:5000/run
 app.get('/run', (req, res) => {
     return res.send({
