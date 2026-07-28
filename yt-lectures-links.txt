@@ -1,3 +1,6 @@
+13 July 2026
+	- https://www.youtube.com/watch?v=t7_xdEsIUe4
+
 14 July (user profile page, dynamic routing)
 	- https://www.youtube.com/watch?v=O1l2b72dK7Q
 
@@ -12,6 +15,9 @@
 
 22 jULY, 2026 (showing data from db)
 	- https://www.youtube.com/watch?v=4x79BVFO1WY
+
+27 July, 2026 (Layouts, Pages, model file changes)
+	- https://www.youtube.com/watch?v=iH-4YPtdGBc
 
 28 July, 2026 (Signup backend and login)
 	- https://www.youtube.com/watch?v=Ef3az0Y_dxk
