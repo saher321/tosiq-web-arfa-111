@@ -12,7 +12,30 @@ export const register = async (req, res) => {
     }
     
     try {
+        const userExist = await User.findOne({email})
+
+        if (userExist) {
+            return res.send({
+                status: false,
+                message: "User already exist with this email"
+            })
+        }
         
+        const user = { fullName, email, password, role }
+        const response = await User.save(user)
+
+        if (response) {
+            return res.send({
+                status: true,
+                message: "Account has been created"
+            })
+        } else {
+            return res.send({
+                status: false,
+                message: "Failed to create account"
+            })
+        }
+
     } catch (error) {
         throw new Error(error)
     }

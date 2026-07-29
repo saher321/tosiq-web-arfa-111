@@ -41,7 +41,7 @@ const Register = () => {
                     <div className='col-span-12'>
                         <InputField
                             {...register("fullName")}
-                            type={"text"}
+                            type="text"
                             hint="Enter your full name"
                         />
                     </div>
@@ -52,7 +52,7 @@ const Register = () => {
                     <div className='col-span-12'>
                         <InputField
                             {...register("email")}
-                            type={"email"}
+                            type="email"
                             hint="Enter your email"
                         />
                     </div>
