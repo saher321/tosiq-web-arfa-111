@@ -22,7 +22,11 @@ export const register = async (req, res) => {
         }
         
         const user = { fullName, email, password, role }
-        const response = await User.save(user)
+        const response = await User.create(user)
+        // const newUser = await new User()
+
+        // newUser.create(user)
+
 
         if (response) {
             return res.send({
