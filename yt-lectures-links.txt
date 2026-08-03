@@ -21,3 +21,6 @@
 
 28 July, 2026 (Signup backend and login)
 	- https://www.youtube.com/watch?v=Ef3az0Y_dxk
+
+3 August, 2026 (Signup backend and login design)
+	- https://www.youtube.com/watch?v=8X_BfROnI0k

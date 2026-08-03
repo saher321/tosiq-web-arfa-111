@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import AuthLayout from '../../layouts/AuthLayout'
 import { Button, InputField } from '../../components/ComponentLib'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useForm } from "react-hook-form"
 import axios from 'axios'
 import { REG_USER_API } from '../../utils/api.js'
@@ -10,13 +10,14 @@ import toast from 'react-hot-toast'
 const Register = () => {
 
     const { register, handleSubmit } = useForm()
-    
+    const navigate = useNavigate()
     const registerUser = async (data) => {
         try {
             const response = await axios.post(REG_USER_API, data)
             if (response.data.status == true) {
                 console.log(response.data.message)
                 toast.success(response.data.message)
+                navigate("/auth/login")
             } else {
                 console.log(response.data.message)
                 toast.error(response.data.message)
