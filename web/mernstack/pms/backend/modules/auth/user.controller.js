@@ -1,7 +1,9 @@
 import bcrypt from "bcrypt"
 import User from "./user.model.js"
 import { emailReg } from "../../utils/common.js"
-
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+dotenv.config()
 // emailgmailcom x
 export const register = async (req, res) => {
     const { fullName, email, password, role } = req.body
@@ -98,10 +100,13 @@ export const login = async (req, res) => {
         }
 
         const loggedinUser = {uID: user._id, role: user.role, email: user.email, fName: user.fullName}
+
+        const token = jwt.sign(loggedinUser, process.env.JWT_SECRET, {expiresIn : '7d'})
         return res.send({
             status: true,
             message: "User loggedin successful!",
-            loggedinUser
+            loggedinUser,
+            token
         })
 
     } catch (error) {

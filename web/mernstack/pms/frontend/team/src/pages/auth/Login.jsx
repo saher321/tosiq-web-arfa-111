@@ -6,10 +6,24 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { LOG_USER_API } from "../../utils/api.js";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const Login = () => {
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
+
+  const checkUser = () => {
+    const token = localStorage.getItem('userToken')
+    if (token) {
+      navigate("/dashboard")
+    } else {
+      return;
+    }
+  }
+
+  useEffect(() => {
+    checkUser()
+  }, [])
 
   const loginUser = async (data) => {
     try {
@@ -17,6 +31,8 @@ const Login = () => {
       if (response.data.status == true) {
         toast.success(response.data.message)
         console.log(response.data)
+        localStorage.setItem('user', JSON.stringify(response.data.loggedinUser))
+        localStorage.setItem('userToken', JSON.stringify(response.data.token))
         // navigate("/dashboard")
       } else {
         toast.error(response.data.message)
