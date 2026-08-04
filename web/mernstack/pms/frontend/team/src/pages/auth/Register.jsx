@@ -73,7 +73,7 @@ const Register = () => {
                         <label>Role</label>
                     </div>
                     <div className='col-span-12'>
-                        <select {...register("role")} className='transition mb-5 px-3 py-2 w-full rounded outline-1 outline-gray-400 focus:outline-purple-600'>
+                        <select {...register("role")} className='bg-gray-200 transition mb-5 px-3 py-2 w-full rounded outline-1 outline-gray-400 focus:outline-purple-600'>
                             <option disabled selected>--- Choose role ---</option>
                             <option value="pm">Project manager</option>
                             <option value="emp">Employee</option>
