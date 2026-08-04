@@ -25,5 +25,5 @@
 3 August, 2026 (Signup backend and login design)
 	- https://www.youtube.com/watch?v=8X_BfROnI0k
 
-4 August, 2026 (Forgot, jwt token)
+4 August, 2026 (Forgot, Reset password screens, jwt token)
 	- https://www.youtube.com/watch?v=3KbqR_2LkQw

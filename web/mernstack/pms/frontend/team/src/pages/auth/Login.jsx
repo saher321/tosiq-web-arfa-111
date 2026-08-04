@@ -76,11 +76,13 @@ const Login = () => {
               />
             </div>
 
-            <div className="col-span-6">
+            <div className="col-span-12 flex items-end justify-between">
               <Button
                 title="Login"
                 className="transition hover:bg-purple-700 hover:shadow-lg cursor-pointer text-center px-5 py-3 text-white rounded bg-purple-600 texzt-xl font-bold"
               />
+              
+              <Link className="hover:text-blue-600" to={'/auth/forgot-password'} >Forgot your password?</Link>
             </div>
           </div>
         </form>
