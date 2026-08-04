@@ -20,7 +20,7 @@ const ResetPassword = () => {
         <div className="text-center mb-10">
           <h2 className="text-[28px] font-bold">Reset Password</h2>
           <p className="italic text-gray-600">
-            By enter your OTP and new password, you will be <br /> redirected towards login{" "}
+            By enter your OTP and new password, you will be <br /> redirected towards login page
           </p>
         </div>
         <form onSubmit={handleSubmit(resetPassword)}>
