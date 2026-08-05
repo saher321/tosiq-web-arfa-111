@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt"
 import User from "./user.model.js"
-import { emailReg } from "../../utils/common.js"
+import { emailReg, generateOtp, sendEmail } from "../../utils/common.js"
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config()
@@ -117,6 +117,53 @@ export const login = async (req, res) => {
         })
     }
 
+}
+
+export const forgotPassword = async (req, res) => {
+    const { email } = req.body
+    if (!email) {
+        return res.send({
+            status: false,
+            message: "Please provide email"
+        })
+    }
+    if (!emailReg.test(email)) {
+        return res.send({
+            status: false,
+            message: "Email format is invalid"
+        })
+    }
+    try {
+        const user = await User.findOne({email})
+        if (!user) {
+            return res.send({
+                status: false,
+                message: "User not found"
+            })
+        }
+
+
+        const OtpCode = generateOtp()
+        console.log("OTP CODE IS: ", OtpCode)
+
+        const subject = "OTP CODE for reset password 🔔🔐"
+        const htmlBody = `
+        Your requested OTP code: <small>${OtpCode}</small>
+        <br />
+        <strong>Note: Do not share this OTP code to anyone</strong>
+        `
+        user.otp = OtpCode
+        await user.save()
+
+        sendEmail(user.email, subject, htmlBody)
+        return res.send({
+            status: true,
+            message: "OTP code has been sent to your email"
+        })
+
+    } catch (error) {
+        throw new Error(error)
+    }
 }
 
 export const getAllUsers = async (req, res) => {

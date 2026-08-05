@@ -27,3 +27,6 @@
 
 4 August, 2026 (Forgot, Reset password screens, jwt token)
 	- https://www.youtube.com/watch?v=3KbqR_2LkQw
+
+5 August, 2026 (forgot backend)
+	- https://www.youtube.com/watch?v=EhEXj4UVcZ4

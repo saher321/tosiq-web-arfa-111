@@ -4,7 +4,7 @@ import { Button, InputField } from "../../components/ComponentLib";
 import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { LOG_USER_API } from "../../utils/api.js";
+import { FPS_USER_API, LOG_USER_API } from "../../utils/api.js";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 
@@ -13,7 +13,20 @@ const ForgotPassword = () => {
   const navigate = useNavigate()
 
   const forgotPassword = async (data) => {
-    navigate("/auth/reset-password")
+    try {
+      const response = await axios.post(FPS_USER_API, data);
+      if (response.data.status == true) {
+        toast.success(response.data.message)
+        console.log(response.data)
+        localStorage.setItem("forgotEmail", data.email)
+        navigate("/auth/reset-password", { replace: true})
+      } else {
+        toast.error(response.data.message)
+      }
+    } catch (error) {
+      console.error("Err:", error)
+      toast.error("Interal server error")
+    }
   }
 
   return (
