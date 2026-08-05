@@ -11,7 +11,7 @@ export const generateOtp = () => {
   return otp
 }
 
-export const  sendEmail = async (toEmail, subject, content) => {
+export const sendEmail = async (toEmail, subject, content) => {
   try {
     // Create a transporter using SMTP
     const transporter = nodemailer.createTransport({
