@@ -166,6 +166,68 @@ export const forgotPassword = async (req, res) => {
     }
 }
 
+export const resetPassword = async (req, res) => {
+    const { email, userOtp, newPassword } = req.body
+    if (!email || !newPassword || !userOtp) {
+        return res.send({
+            status: false,
+            message: "Fill all the fields"
+        })
+    }
+
+    if (!emailReg.test(email)) {
+        return res.send({
+            status: false,
+            message: "Email format is invalid"
+        })
+    }
+    
+    if (!userOtp) {
+        return res.send({
+            status: false,
+            message: "Please provide Otp!"
+        })
+    }
+
+    try {
+        const user = await User.findOne({email})
+
+        if (!user) {
+            return res.send({
+                status: false,
+                message: "User not found!"
+            })
+        }
+
+        if (user.otp != userOtp) {
+            return res.send({
+                status: false,
+                message: "Given otp is invalid!"
+            })
+        }
+
+        // hash passwprd
+        const salt = await bcrypt.genSaltSync(10)
+        const encPass = await bcrypt.hashSync(newPassword, salt)
+
+        user.otp = null
+        user.isOtpVerified = true
+        user.password = encPass
+
+        user.save()
+
+        return res.send({
+            status: true,
+            message: "Password has been changed"
+        })
+
+        
+    } catch (error) {
+        throw new Error(error)
+    }
+
+}
+
 export const getAllUsers = async (req, res) => {
 
     try {

@@ -30,3 +30,6 @@
 
 5 August, 2026 (forgot backend)
 	- https://www.youtube.com/watch?v=EhEXj4UVcZ4
+
+10 August, 2026 (password reset, zustand)
+	- https://www.youtube.com/watch?v=AiQh3DcxorI
