@@ -10,6 +10,7 @@ import { useEffect } from "react";
 
 const Login = () => {
   const { register, handleSubmit } = useForm()
+  const [togglePassword, setTogglePassword] = useState(false)
   const navigate = useNavigate()
 
   const checkUser = () => {
@@ -24,6 +25,10 @@ const Login = () => {
   useEffect(() => {
     checkUser()
   }, [])
+
+  const showPassword = () => {
+    setTogglePassword(!togglePassword)
+  }
 
   const loginUser = async (data) => {
     try {
@@ -71,12 +76,16 @@ const Login = () => {
             <div className="col-span-12">
               <InputField
                 {...register("password")}
-                type="password"
+                type={togglePassword ? "text" : "password"}
                 hint="Enter your password"
               />
             </div>
+            <div className="col-span-12">
+              <input type="checkbox" id="show-pass" onChange={showPassword}/> {" "}
+              <label htmlFor="show-pass">Show password</label>
+            </div>
 
-            <div className="col-span-12 flex items-end justify-between">
+            <div className="mt-3 col-span-12 flex items-end justify-between">
               <Button
                 title="Login"
                 className="transition hover:bg-purple-700 hover:shadow-lg cursor-pointer text-center px-5 py-3 text-white rounded bg-purple-600 texzt-xl font-bold"
