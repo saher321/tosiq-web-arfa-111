@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <AdminLayout>
         <div className='font-bold'>
-          Welcome to dashboard: {user}
+          Welcome to dashboard: {user.fName}
         </div>
     </AdminLayout>
   )
