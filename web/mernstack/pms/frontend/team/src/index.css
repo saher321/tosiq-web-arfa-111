@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+/* dashbaord navbar css */
+.nav-link{
+    background-color: #ccc;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: bold
+}

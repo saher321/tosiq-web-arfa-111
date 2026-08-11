@@ -7,11 +7,13 @@ import axios from "axios";
 import { LOG_USER_API } from "../../utils/api.js";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import useAuth from "../../store/useAuth.jsx";
 
 const Login = () => {
   const { register, handleSubmit } = useForm()
   const [togglePassword, setTogglePassword] = useState(false)
   const navigate = useNavigate()
+  const login = useAuth((state) => state.login)
 
   const checkUser = () => {
     const token = localStorage.getItem('userToken')
@@ -36,9 +38,10 @@ const Login = () => {
       if (response.data.status == true) {
         toast.success(response.data.message)
         console.log(response.data)
-        localStorage.setItem('user', JSON.stringify(response.data.loggedinUser))
-        localStorage.setItem('userToken', JSON.stringify(response.data.token))
-        // navigate("/dashboard")
+
+        login(response.data.loggedinUser, response.data.token)
+        
+        navigate("/dashboard", {replace: true})
       } else {
         toast.error(response.data.message)
       }
