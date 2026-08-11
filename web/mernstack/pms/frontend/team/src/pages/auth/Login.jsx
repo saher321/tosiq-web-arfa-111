@@ -14,20 +14,7 @@ const Login = () => {
   const [togglePassword, setTogglePassword] = useState(false)
   const navigate = useNavigate()
   const login = useAuth((state) => state.login)
-
-  const checkUser = () => {
-    const token = localStorage.getItem('userToken')
-    if (token) {
-      navigate("/dashboard")
-    } else {
-      return;
-    }
-  }
-
-  useEffect(() => {
-    checkUser()
-  }, [])
-
+  
   const showPassword = () => {
     setTogglePassword(!togglePassword)
   }

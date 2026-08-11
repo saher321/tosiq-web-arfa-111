@@ -11,9 +11,10 @@ export const InputField = (props) => {
   )
 }
 
-export const Button = ({className, title}) => {
+export const Button = (props) => {
+  const { title, className, ...otherProps } = props
   return (
-    <button className={className}>{ title }</button>
+    <button {...otherProps} className={className}>{ title }</button>
   )
 }
 
