@@ -6,7 +6,7 @@ export const InputField = (props) => {
     <input 
     {...otherProps}
     type={type} 
-    className={"transition bg-gray-200 mb-5 px-3 py-2 w-full rounded outline-1 outline-gray-400 focus:outline-purple-600"} 
+    className={"transition bg-gray-300 mb-5 px-3 py-2 w-full rounded outline-1 outline-gray-400 focus:outline-purple-600"} 
     placeholder={hint} />
   )
 }

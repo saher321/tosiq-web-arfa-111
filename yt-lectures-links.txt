@@ -36,3 +36,6 @@
 
 11 August, 2026 (authentication, auth route, protected route)
 	- https://www.youtube.com/watch?v=yNp6DNwLErE
+
+12 August, 2026 (Role based access, admin dashboard ui layout design)
+	- https://www.youtube.com/watch?v=ULSP00lsEOE

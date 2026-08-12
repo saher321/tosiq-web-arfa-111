@@ -3,8 +3,9 @@ import { NavLink, useNavigate } from 'react-router'
 import useAuth from '../store/useAuth'
 import { Button } from '../components/ComponentLib'
 import { Bell, FolderKanban, LayoutDashboard, ListTodo, LogOut, UserRound, Users } from 'lucide-react'
-// manager layout
-const AdminLayout = ({children}) => {
+
+// employee layout
+const EmployeeLayout = ({children}) => {
   const user = useAuth((state) => state.user)
   const logout = useAuth((state) => state.logout)
   const navigate = useNavigate()
@@ -15,10 +16,7 @@ const AdminLayout = ({children}) => {
   }
   const navItems = [
     { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
-    { name: "Customers", path: "/customers", icon: Users },
-    { name: "Projects", path: "/projects", icon: FolderKanban },
-    { name: "Employees", path: "/employees", icon: UserRound },
-    { name: "Tasks", path: "/tasks", icon: ListTodo },
+    { name: "My Tasks", path: "/tasks", icon: ListTodo },
   ];
   return (
     <div className="min-h-screen bg-slate-100">
@@ -94,4 +92,4 @@ const AdminLayout = ({children}) => {
   )
 }
 
-export default AdminLayout
+export default EmployeeLayout

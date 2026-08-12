@@ -3,6 +3,7 @@ import AdminLayout from '../layouts/AdminLayout'
 import useAuth from "../store/useAuth.jsx";
 import { Button } from '../components/ComponentLib.jsx';
 import { useNavigate } from 'react-router';
+import RoleBasedLayout from '../layouts/RoleBasedLayout.jsx';
 
 const Dashboard = () => {
   const user = useAuth((state) => state.user)
@@ -14,14 +15,17 @@ const Dashboard = () => {
     navigate('/auth/login', {replace: true})
   }
   return (
-    <AdminLayout>
-        <div className='font-bold'>
-          Welcome to dashboard: {user?.fName ?? "No loggedin"}
-          <Button
-          className="block bg-red-800 text-white p-1 rounded"
-          onClick={handleLogout} title="Logout"/>
+    <RoleBasedLayout>
+        <div className='bg-white p-3 rounded-lg'>
+          {
+          user?.role == 'pm' ?
+          <span className='block w-fit text-[12px] font-bold text-green-950 bg-green-200 p-1 rounded-full border border-green-950'>Manager</span>:
+          <span className='block w-fit text-[12px] font-bold text-gray-950 bg-gray-200 p-1 rounded-full border border-gray-950'>Employee</span>
+          }
+          <h2 className='text-[24px] font-bold'>Welcome back, {user?.fName}</h2>
+          <p className='text-gray-700'>{user?.email}</p>
         </div>
-    </AdminLayout>
+    </RoleBasedLayout>
   )
 }
 
