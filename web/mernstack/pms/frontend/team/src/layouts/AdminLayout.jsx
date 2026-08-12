@@ -21,13 +21,13 @@ const AdminLayout = ({children}) => {
     { name: "Tasks", path: "/tasks", icon: ListTodo },
   ];
   return (
-    <div className="min-h-screen bg-slate-100">
+    <div className="min-h-screen bg-gray-100">
 
       {/* Sidebar */}
-      <aside className="fixed left-0 top-0 h-screen w-64 bg-gray-200">
+      <aside className="fixed left-0 top-0 h-screen w-64 bg-white">
         
         {/* Logo */}
-        <div className="flex h-20 items-center border-b border-slate-300 px-6">
+        <div className="flex h-20 items-center border-b border-gray-100 px-6">
           <h1 className="text-xl font-bold">
             pms
           </h1>
