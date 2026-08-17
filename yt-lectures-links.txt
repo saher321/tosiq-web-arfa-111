@@ -39,3 +39,6 @@
 
 12 August, 2026 (Role based access, admin dashboard ui layout design)
 	- https://www.youtube.com/watch?v=ULSP00lsEOE
+
+17 August, 2026 (Customer crud , and ui design)
+	- https://www.youtube.com/watch?v=DsCSk3iFFNE

@@ -14,7 +14,7 @@ const AdminLayout = ({children}) => {
     navigate('/auth/login', {replace: true})
   }
   const navItems = [
-    { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
+    { name: "Dashboard", path: "/", icon: LayoutDashboard },
     { name: "Customers", path: "/customers", icon: Users },
     { name: "Projects", path: "/projects", icon: FolderKanban },
     { name: "Employees", path: "/employees", icon: UserRound },

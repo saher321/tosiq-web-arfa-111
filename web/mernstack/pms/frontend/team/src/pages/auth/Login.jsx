@@ -28,7 +28,7 @@ const Login = () => {
 
         login(response.data.loggedinUser, response.data.token)
         
-        navigate("/dashboard", {replace: true})
+        navigate("/", {replace: true})
       } else {
         toast.error(response.data.message)
       }

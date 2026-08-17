@@ -7,6 +7,10 @@ import ForgotPassword from './pages/auth/ForgotPassword'
 import ResetPassword from './pages/auth/ResetPassword'
 import ProtectedRoute from './utils/ProtectedRoute'
 import AuthRoute from './utils/AuthRoute'
+import Customers from './pages/customers/Customers'
+import AddCustomer from './pages/customers/AddCustomer'
+import EditCustomer from './pages/customers/EditCustomer'
+import CustomerDetails from './pages/customers/CustomerDetails'
 
 const App = () => {
   return (
@@ -21,7 +25,14 @@ const App = () => {
         </Route>
 
         <Route element={<ProtectedRoute />}>
-          <Route path='/dashboard' element={<Dashboard />}/>
+          <Route path='/' element={<Dashboard />}/>
+
+          {/* customer routes */}
+          <Route path='/customers' element={<Customers />}/>
+          <Route path='/customers/add' element={<AddCustomer />}/>
+          <Route path='/customers/:id/edit' element={<EditCustomer />}/>
+          <Route path='/customers/:id/details' element={<CustomerDetails />}/>
+
         </Route>
 
       </Routes>

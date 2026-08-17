@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 export const InputField = (props) => {
   const {title="", className, type, hint, ...otherProps} = props
@@ -18,4 +19,11 @@ export const Button = (props) => {
   )
 }
 
+export const NavigateLink = ({ children, url, className, ...otherProps }) => {
+  return (
+    <Link {...otherProps} to={url} className={className} >
+      {children}
+    </Link>
+  )
+}
 

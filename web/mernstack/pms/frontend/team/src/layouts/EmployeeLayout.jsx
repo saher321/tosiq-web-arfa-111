@@ -15,7 +15,7 @@ const EmployeeLayout = ({children}) => {
     navigate('/auth/login', {replace: true})
   }
   const navItems = [
-    { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
+    { name: "Dashboard", path: "/", icon: LayoutDashboard },
     { name: "My Tasks", path: "/tasks", icon: ListTodo },
   ];
   return (

@@ -6,7 +6,7 @@ const AuthRoute = () => {
     const isAuthenticated = useAuth((state) => state.isAuthenticated)
     
     return isAuthenticated ? (
-        <Navigate to={'/dashboard'} replace={true} />
+        <Navigate to={'/'} replace={true} />
     ) : (
         <Outlet />
     )
