@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import AuthLayout from '../../layouts/AuthLayout'
-import { Button, InputField } from '../../components/ComponentLib'
+import { Button, InputField, SelectInput } from '../../components/ComponentLib'
 import { Link, useNavigate } from 'react-router'
 import { useForm } from "react-hook-form"
 import axios from 'axios'
@@ -8,7 +8,10 @@ import { REG_USER_API } from '../../utils/api.js'
 import toast from 'react-hot-toast'
 
 const Register = () => {
-
+    const [roles, setRoles] = useState([
+        { id: 'pm', text: 'Project manager'}, 
+        { id: 'emp', text: 'Employee'}, 
+    ])
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
     const registerUser = async (data) => {
@@ -73,11 +76,10 @@ const Register = () => {
                         <label>Role</label>
                     </div>
                     <div className='col-span-12'>
-                        <select {...register("role")} className='bg-gray-200 transition mb-5 px-3 py-2 w-full rounded outline-1 outline-gray-400 focus:outline-purple-600'>
-                            <option disabled selected>--- Choose role ---</option>
-                            <option value="pm">Project manager</option>
-                            <option value="emp">Employee</option>
-                        </select>
+                        <SelectInput
+                        {...register("role")}
+                        data={roles}
+                        />
                     </div>
 
                     <div className='col-span-6'>
