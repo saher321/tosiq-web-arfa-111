@@ -22,7 +22,7 @@ const customerSchema = new mongoose.Schema(
       required: true,
       // minlength: 5
     },
-    project_status: {
+    projectStatus: {
       type: String,
       enum: ['active', 'proccessing', 'completed', 'cancelled'],
       default: 'active',

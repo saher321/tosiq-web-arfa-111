@@ -2,14 +2,34 @@ import React, { useState } from 'react'
 import RoleBasedLayout from '../../layouts/RoleBasedLayout.jsx';
 import { Button, InputField, NavigateLink, SelectInput } from '../../components/ComponentLib.jsx';
 import { MoveLeft } from 'lucide-react';
+import { projectStatues } from '../../utils/common.js';
+import { useForm } from "react-hook-form";
+import axios from 'axios';
+import { ADD_CUST_API } from '../../utils/api.js';
+import { useNavigate } from 'react-router';
+import toast from 'react-hot-toast';
 
 const AddCustomer = () => {
-  const [projectStatuses, setProjectStatues] = useState([
-    { id: 'active', text: "Active" },
-    { id: 'proccessing', text: "Proccessing" },
-    { id: 'completed', text: "Completed" },
-    { id: 'cancelled', text: "Cancelled" },
-  ])
+  const [projectStatuses, setProjectStatues] = useState(projectStatues)
+  const { register, handleSubmit } = useForm()
+  const navigate = useNavigate()
+
+  const handleAddCustomer = async (data) => {
+    try {
+      const response = await axios.post(ADD_CUST_API, data)
+      if (response.data.status == true){
+        toast.success(response.data.message)
+        navigate('/customers')
+      } else {
+        toast.error(response.data.message)
+      } 
+    } catch (error) {
+      throw new Error(error)
+        toast.error("Internal server error")
+    }
+  }
+
+
   return (
     <RoleBasedLayout>
       <div>
@@ -39,17 +59,20 @@ const AddCustomer = () => {
         </div>
 
         <div className='my-5 max-w-2xl'>
-          <form>
+          <form onSubmit={handleSubmit(handleAddCustomer)}>
             <div className='grid grid-cols-12 gap-3'>
               <div className='col-span-6'>
                 <label>Full name</label>
                 <InputField
+                  {...register('fullName')}
+                  type="text"
                   hint="John Doe"
                 />
               </div>
               <div className='col-span-6'>
                 <label>Email address</label>
                 <InputField
+                  {...register('email')}
                   type="email"
                   hint="john.doe@email.com"
                 />
@@ -57,18 +80,23 @@ const AddCustomer = () => {
               <div className='col-span-6'>
                 <label>Contact</label>
                 <InputField
+                  {...register('contact')}
+                  type="text"
                   hint="+92 3000000000"
                 />
               </div>
               <div className='col-span-6'>
                 <label>Project status</label>
                 <SelectInput
+                  {...register('projectStatus')}
                   data={projectStatuses}
                 />
               </div>
               <div className='col-span-12'>
                 <label>Address</label>
                 <InputField
+                  {...register('address')}
+                  type="text"
                   hint="Texas, USA"
                 />
               </div>

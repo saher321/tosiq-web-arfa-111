@@ -1,8 +1,33 @@
 import React from 'react'
 import RoleBasedLayout from '../../layouts/RoleBasedLayout.jsx';
 import { Button, NavigateLink } from '../../components/ComponentLib.jsx';
+import { useState } from 'react';
+import { ALL_CUST_API } from '../../utils/api.js';
+import axios from 'axios'
+import { toast } from 'react-hot-toast'
+import { useEffect } from 'react';
+import moment from 'moment';
 
 const Customers = () => {
+    const [customers, setCustomers] = useState([])
+
+    const getAllCustomers = async () => {
+        try {
+            const response = await axios.get(ALL_CUST_API)
+            if (response.data.status == true){
+                setCustomers(response.data.customers)
+            } else {
+                toast.error("No record were found")
+            }
+        } catch (error) {
+            throw new Error(error)
+            toast.error("Internal server error")
+        }
+    }
+
+    useEffect(() => {
+        getAllCustomers()
+    }, [])
 
     return (
         <RoleBasedLayout>
@@ -27,7 +52,6 @@ const Customers = () => {
                                 <th scope="col" class="px-6 py-4">Name</th>
                                 <th scope="col" class="px-6 py-4">Email</th>
                                 <th scope="col" class="px-6 py-4">Contact</th>
-                                <th scope="col" class="px-6 py-4">Address</th>
                                 <th scope="col" class="px-6 py-4">Project Status</th>
                                 <th scope="col" class="px-6 py-4">Created At</th>
                                 <th scope="col" class="px-6 py-4">Updated At</th>
@@ -35,133 +59,57 @@ const Customers = () => {
                         </thead>
 
                         <tbody class="divide-y divide-gray-200 bg-white">
-                            <tr class="hover:bg-gray-50">
-                                <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
-                                    John Doe
-                                </td>
+                            {
+                                customers.length == 0 ?
+                                <tr><td class="px-6 py-4" colSpan={7}>No customer were found</td></tr> :
+                                customers.map((customer, i) => {
+                                    return (
+                                        <tr key={i} class="hover:bg-gray-50">
+                                            <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
+                                                {customer.fullName}
+                                            </td>
 
-                                <td class="px-6 py-4">
-                                    john@example.com
-                                </td>
+                                            <td class="px-6 py-4">
+                                                {customer.email}
+                                            </td>
 
-                                <td class="px-6 py-4">
-                                    +92 300 1234567
-                                </td>
+                                            <td class="px-6 py-4">
+                                                {customer.contact}
+                                            </td>
 
-                                <td class="px-6 py-4">
-                                    Lahore, Pakistan
-                                </td>
+                                            <td class="px-6 py-4">
+                                                {
+                                                customer.projectStatus == 'active' ?
+                                                <span class="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
+                                                    Active
+                                                </span> :
+                                                customer.projectStatus == 'proccessing' ?
+                                                <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700">
+                                                    Proccessing
+                                                </span> :
+                                                customer.projectStatus == 'completed' ?
+                                                <span class="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
+                                                    Completed
+                                                </span> :
+                                                customer.projectStatus == 'cancelled' &&
+                                                <span class="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">
+                                                    Cancelled
+                                                </span>
 
-                                <td class="px-6 py-4">
-                                    <span class="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
-                                        Active
-                                    </span>
-                                </td>
+                                                }
+                                            </td>
 
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    Aug 17, 2026
-                                </td>
+                                            <td class="whitespace-nowrap px-6 py-4">
+                                                {moment(customer.createdAt).format('LL')}
+                                            </td>
 
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    Aug 17, 2026
-                                </td>
-                            </tr>
-
-                            <tr class="hover:bg-gray-50">
-                                <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
-                                    Sarah Khan
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    sarah@example.com
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    +92 301 9876543
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    Islamabad, Pakistan
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700">
-                                        Processing
-                                    </span>
-                                </td>
-
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    Aug 15, 2026
-                                </td>
-
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    Aug 16, 2026
-                                </td>
-                            </tr>
-
-                            <tr class="hover:bg-gray-50">
-                                <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
-                                    Ali Ahmed
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    ali@example.com
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    +92 302 5551234
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    Karachi, Pakistan
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    <span class="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
-                                        Completed
-                                    </span>
-                                </td>
-
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    Aug 10, 2026
-                                </td>
-
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    Aug 14, 2026
-                                </td>
-                            </tr>
-
-                            <tr class="hover:bg-gray-50">
-                                <td class="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
-                                    Ahmed Raza
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    ahmed@example.com
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    +92 303 1112233
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    Multan, Pakistan
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    <span class="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">
-                                        Cancelled
-                                    </span>
-                                </td>
-
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    Aug 05, 2026
-                                </td>
-
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    Aug 08, 2026
-                                </td>
-                            </tr>
+                                            <td class="whitespace-nowrap px-6 py-4">
+                                                {moment(customer.updatedAt).format('LL')}
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            }
                         </tbody>
                     </table>
                 </div>
