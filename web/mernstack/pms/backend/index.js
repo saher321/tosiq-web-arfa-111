@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import { connectDB } from './config/db.js'
 import userRouter from './modules/auth/user.routes.js'
+import customerRouter from './modules/team/customers/customer.routes.js'
 
 const app = express()
 const PORT= process.env.PORT || 5000
@@ -26,6 +27,9 @@ app.get('/run', (req, res) => {
 
 // users
 app.use(PREFIX, userRouter)
+
+// customers
+app.use(PREFIX, customerRouter)
 
 
 connectDB().then(() => {

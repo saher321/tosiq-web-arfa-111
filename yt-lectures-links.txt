@@ -42,3 +42,6 @@
 
 17 August, 2026 (Customer crud , and ui design)
 	- https://www.youtube.com/watch?v=DsCSk3iFFNE
+
+18 August, 2026 (customer add, show, delete)
+	- https://www.youtube.com/watch?v=jTAMid_ii3o
