@@ -11,6 +11,7 @@ export const RST_USER_API = BASE_URL_V1 + "/auth/reset-password"
 export const ALL_CUST_API = BASE_URL_V1 + '/customers'
 export const ADD_CUST_API = BASE_URL_V1 + '/customers/add'
 export const DEL_CUST_API = BASE_URL_V1 + '/customers'
+export const EDT_CUST_API = BASE_URL_V1 + '/customers'
 
 // projects
 

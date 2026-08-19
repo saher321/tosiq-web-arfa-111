@@ -1,5 +1,5 @@
 import express from 'express'
-import { customers, addCustomer, deleteCustomer } from './customer.controller.js'
+import { customers, addCustomer, deleteCustomer, editCustomer } from './customer.controller.js'
 
 
 const customerRouter = express.Router()
@@ -8,5 +8,6 @@ const customerRouter = express.Router()
 customerRouter.get('/customers/', customers)
 customerRouter.post('/customers/add', addCustomer)
 customerRouter.delete('/customers/:id/delete', deleteCustomer)
+customerRouter.get('/customers/:id/edit', editCustomer)
 
 export default customerRouter

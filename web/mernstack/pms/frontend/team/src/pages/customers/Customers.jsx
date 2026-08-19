@@ -134,7 +134,7 @@ const Customers = () => {
                                                     <Link onClick={() => handleDelete(customer._id)}>
                                                         <Trash2 size={32} className='rounded-lg text-purple-600 bg-gray-200 p-2' />
                                                     </Link>
-                                                    <Link>
+                                                    <Link to={`/customers/${customer._id}/edit`}>
                                                         <SquarePen size={32} className='rounded-lg text-purple-600 bg-gray-200 p-2' />
                                                     </Link>
                                                 </div>
