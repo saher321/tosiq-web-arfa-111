@@ -45,7 +45,7 @@ const AddCustomer = () => {
 
       <div className='mt-3 bg-white p-3 rounded-lg'>
         
-        <div className='flex items-center justify-between'>
+        <div className='my-3 flex items-center justify-between'>
           <div>
             <h1 className='font-bold text-[18px]'>Add new customer</h1>
           </div>

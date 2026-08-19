@@ -66,3 +66,30 @@ export const addCustomer = async (req, res) => {
         throw new Error(error)
     }
 }
+
+export const deleteCustomer = async (req, res) => {
+    const { id } = req.params
+    if (!id){
+        return res.send({
+            status: false,
+            message: "ID not found!"
+        })
+    }
+    try {
+        const customer = await Customer.findByIdAndDelete({_id: id})
+        if (!customer) {
+            return res.send({
+                status: false,
+                message: "Customer not found"
+            })
+        }
+
+        return res.send({
+            status: true, 
+            message: "Customer has been deleted!"
+        })
+
+    } catch (error) {
+        throw new Error(error)
+    }
+}

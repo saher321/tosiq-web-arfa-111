@@ -45,3 +45,6 @@
 
 18 August, 2026 (customer add, show, delete)
 	- https://www.youtube.com/watch?v=jTAMid_ii3o
+
+19 August, 2026 (customer delete, edit)
+	- https://www.youtube.com/watch?v=dWvk_Wykm_E
