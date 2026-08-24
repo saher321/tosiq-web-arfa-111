@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import RoleBasedLayout from '../../layouts/RoleBasedLayout.jsx';
 import { Button, InputField, NavigateLink, SelectInput } from '../../components/ComponentLib.jsx';
 import { MoveLeft } from 'lucide-react';
-import { projectStatues } from '../../utils/common.js';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { ADD_CUST_API } from '../../utils/api.js';
@@ -10,7 +9,6 @@ import { useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 
 const AddCustomer = () => {
-  const [projectStatuses, setProjectStatues] = useState(projectStatues)
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
 
@@ -24,8 +22,8 @@ const AddCustomer = () => {
         toast.error(response.data.message)
       } 
     } catch (error) {
+      toast.error("Internal server error")
       throw new Error(error)
-        toast.error("Internal server error")
     }
   }
 
@@ -83,13 +81,6 @@ const AddCustomer = () => {
                   {...register('contact')}
                   type="text"
                   hint="+92 3000000000"
-                />
-              </div>
-              <div className='col-span-6'>
-                <label>Project status</label>
-                <SelectInput
-                  {...register('projectStatus')}
-                  data={projectStatuses}
                 />
               </div>
               <div className='col-span-12'>

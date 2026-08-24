@@ -16,6 +16,7 @@ const Projects = () => {
   const getAllProjects = async () => {
     try {
       const response = await axios.get(ALL_PRO_API);
+      console.log(response)
       if (response.data.status == true) {
         setProjects(response.data.projects);
       } else {

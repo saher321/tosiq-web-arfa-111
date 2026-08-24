@@ -15,9 +15,9 @@ export const customers = async (req, res) => {
 };
 
 export const addCustomer = async (req, res) => {
-  const { fullName, email, contact, projectStatus, address } = req.body;
+  const { fullName, email, contact, address } = req.body;
 
-  if (!fullName || !email || !contact || !projectStatus) {
+  if (!fullName || !email || !contact) {
     return res.send({
       status: false,
       message: "Fill all the fields",
@@ -44,7 +44,6 @@ export const addCustomer = async (req, res) => {
       fullName,
       email,
       contact,
-      projectStatus,
       address: address || "",
     };
 
@@ -93,7 +92,6 @@ export const deleteCustomer = async (req, res) => {
 
 export const editCustomer = async (req, res) => {
   const { id } = req.params;
-  console.log(req);
   if (!id) {
     return res.send({
       status: false,

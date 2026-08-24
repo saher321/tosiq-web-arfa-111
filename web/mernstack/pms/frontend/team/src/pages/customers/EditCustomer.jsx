@@ -7,7 +7,6 @@ import {
   SelectInput,
 } from "../../components/ComponentLib.jsx";
 import { MoveLeft } from "lucide-react";
-import { projectStatues } from "../../utils/common.js";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { EDT_CUST_API, UPT_CUST_API } from "../../utils/api.js";
@@ -15,7 +14,6 @@ import { useNavigate, useParams } from "react-router";
 import toast from "react-hot-toast";
 
 const EditCustomer = () => {
-  const [projectStatuses, setProjectStatuses] = useState(projectStatues);
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const params = useParams();
@@ -106,13 +104,6 @@ const EditCustomer = () => {
                   {...register("contact")}
                   type="text"
                   hint="+92 3000000000"
-                />
-              </div>
-              <div className="col-span-6">
-                <label>Project status</label>
-                <SelectInput
-                  {...register("projectStatus")}
-                  data={projectStatuses}
                 />
               </div>
               <div className="col-span-12">

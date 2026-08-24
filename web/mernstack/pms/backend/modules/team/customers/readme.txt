@@ -11,6 +11,5 @@ Data
 name
 email
 contact
-project status (Active, Proccessing, Completed, Cancelled)
 address
 created & updated_at

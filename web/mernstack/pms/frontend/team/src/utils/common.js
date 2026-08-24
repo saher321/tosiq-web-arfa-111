@@ -1,4 +1,4 @@
-export const projectStatues = [
+export const projectStatuses = [
     { id: 'active', text: "Active" },
     { id: 'proccessing', text: "Proccessing" },
     { id: 'completed', text: "Completed" },

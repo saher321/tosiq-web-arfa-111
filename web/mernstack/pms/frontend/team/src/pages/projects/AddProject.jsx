@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import RoleBasedLayout from '../../layouts/RoleBasedLayout.jsx';
 import { Button, InputField, NavigateLink, SelectInput } from '../../components/ComponentLib.jsx';
 import { MoveLeft } from 'lucide-react';
-import { projectStatues } from '../../utils/common.js';
+import { projectStatuses } from '../../utils/common.js';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { ADD_PRO_API } from '../../utils/api.js';
@@ -10,29 +10,29 @@ import { useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 
 const AddProject = () => {
-  const [projectStatuses, setProjectStatuses] = useState(projectStatues)
+  const [projectStatuses, setProjectStatuses] = useState(projectStatuses)
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
 
   const [customers, setCustomers] = useState([])
 
-    const getAllCustomers = async () => {
-        try {
-            const response = await axios.get(ALL_CUST_API)
-            if (response.data.status == true){
-                setCustomers(response.data.customers)
-            } else {
-                toast.error("No record were found")
-            }
-        } catch (error) {
-            toast.error("Internal server error")
-            throw new Error(error)
-        }
-    }
+  const getAllCustomers = async () => {
+      try {
+          const response = await axios.get(ALL_CUST_API)
+          if (response.data.status == true){
+              setCustomers(response.data.customers)
+          } else {
+              toast.error("No record were found")
+          }
+      } catch (error) {
+          toast.error("Internal server error")
+          throw new Error(error)
+      }
+  }
 
-    useEffect(() => {
-      getAllCustomers()
-    }, [])
+  useEffect(() => {
+    getAllCustomers()
+  }, [])
 
   const handleAddProject = async (data) => {
     try {
@@ -109,7 +109,14 @@ const AddProject = () => {
                   {...register('deadLine')}
                   type="date"
                 />
-              </div>              
+              </div>  
+              <div className='col-span-6'>
+                <label>Project status</label>
+                <SelectInput
+                  {...register('projectStatus')}
+                  data={projectStatuses}
+                />
+              </div>            
               <div className='col-span-12'>
                 <label>Notes</label>
                 <InputField

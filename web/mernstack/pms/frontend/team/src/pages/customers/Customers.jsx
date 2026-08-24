@@ -74,9 +74,8 @@ const Customers = () => {
                                 <th scope="col" className="px-6 py-4">Name</th>
                                 <th scope="col" className="px-6 py-4">Email</th>
                                 <th scope="col" className="px-6 py-4">Contact</th>
-                                <th scope="col" className="px-6 py-4">Project Status</th>
+                                <th scope="col" className="px-6 py-4">Address</th>
                                 <th scope="col" className="px-6 py-4">Created At</th>
-                                <th scope="col" className="px-6 py-4">Updated At</th>
                                 <th scope="col" className="px-6 py-4">Actions</th>
                             </tr>
                         </thead>
@@ -100,35 +99,14 @@ const Customers = () => {
                                                 {customer.contact}
                                             </td>
 
-                                            <td className="px-6 py-4">
-                                                {
-                                                customer.projectStatus == 'active' ?
-                                                <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
-                                                    Active
-                                                </span> :
-                                                customer.projectStatus == 'proccessing' ?
-                                                <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700">
-                                                    Proccessing
-                                                </span> :
-                                                customer.projectStatus == 'completed' ?
-                                                <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
-                                                    Completed
-                                                </span> :
-                                                customer.projectStatus == 'cancelled' &&
-                                                <span className="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">
-                                                    Cancelled
-                                                </span>
-
-                                                }
+                                            <td className="text-wrap whitespace-nowrap px-6 py-4">
+                                                {customer.address}
                                             </td>
 
                                             <td className="whitespace-nowrap px-6 py-4">
                                                 {moment(customer.createdAt).format('LL')}
                                             </td>
 
-                                            <td className="whitespace-nowrap px-6 py-4">
-                                                {moment(customer.updatedAt).format('LL')}
-                                            </td>
                                             <td className="whitespace-nowrap px-6 py-4">
                                                 <div className='flex gap-3'>
                                                     <Link onClick={() => handleDelete(customer._id)}>
