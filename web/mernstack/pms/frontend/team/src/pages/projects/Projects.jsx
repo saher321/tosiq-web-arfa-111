@@ -16,7 +16,7 @@ const Projects = () => {
   const getAllProjects = async () => {
     try {
       const response = await axios.get(ALL_PRO_API);
-      console.log(response)
+      console.log(response);
       if (response.data.status == true) {
         setProjects(response.data.projects);
       } else {
@@ -85,6 +85,9 @@ const Projects = () => {
                   Dead line
                 </th>
                 <th scope="col" className="px-6 py-4">
+                  Project Status
+                </th>
+                <th scope="col" className="px-6 py-4">
                   Created At
                 </th>
                 <th scope="col" className="px-6 py-4">
@@ -118,6 +121,28 @@ const Projects = () => {
 
                       <td className="whitespace-nowrap px-6 py-4">
                         {moment(project.deadLine).format("LL")}
+                      </td>
+
+                      <td className="px-6 py-4">
+                        {project.projectStatus == "active" ? (
+                          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
+                            Active
+                          </span>
+                        ) : project.projectStatus == "proccessing" ? (
+                          <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700">
+                            Proccessing
+                          </span>
+                        ) : project.projectStatus == "completed" ? (
+                          <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
+                            Completed
+                          </span>
+                        ) : (
+                          project.projectStatus == "cancelled" && (
+                            <span className="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">
+                              Cancelled
+                            </span>
+                          )
+                        )}
                       </td>
 
                       <td className="whitespace-nowrap px-6 py-4">
