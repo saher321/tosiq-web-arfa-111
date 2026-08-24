@@ -1,123 +1,147 @@
-import { emailReg } from "../../../utils/common.js"
-import Customer from "./customer.model.js"
+import { emailReg } from "../../../utils/common.js";
+import Customer from "./customer.model.js";
 
 export const customers = async (req, res) => {
-    try {
-        const allCustomers = await Customer.find({})
+  try {
+    const allCustomers = await Customer.find({});
 
-        return res.send({
-            status: true,
-            customers: allCustomers
-        })
-
-    } catch (error) {
-        throw new Error(error)
-    }
-}
+    return res.send({
+      status: true,
+      customers: allCustomers,
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export const addCustomer = async (req, res) => {
-    const { fullName, email, contact, projectStatus, address } = req.body
+  const { fullName, email, contact, projectStatus, address } = req.body;
 
-    if (!fullName || !email || !contact || !projectStatus) {
-            return res.send({
-                status: false,
-                message: "Fill all the fields"
-            })
-        }
-    
-    if (!emailReg.test(email)) {
-        return res.send({
-            status: false,
-            message: "Email format is invalid"
-        })
+  if (!fullName || !email || !contact || !projectStatus) {
+    return res.send({
+      status: false,
+      message: "Fill all the fields",
+    });
+  }
+
+  if (!emailReg.test(email)) {
+    return res.send({
+      status: false,
+      message: "Email format is invalid",
+    });
+  }
+
+  try {
+    const exist = await Customer.findOne({ email });
+    if (exist) {
+      return res.send({
+        status: false,
+        message: "Customer already exist with this email",
+      });
     }
 
-    try {
-        const exist = await Customer.findOne({email})
-        if (exist) {
-            return res.send({
-                status: false,
-                message: "Customer already exist with this email"
-            })
-        }
+    const customer = {
+      fullName,
+      email,
+      contact,
+      projectStatus,
+      address: address || "",
+    };
 
-        const customer = { 
-            fullName, 
-            email, 
-            contact, 
-            projectStatus,
-            address : address || ''
-        }
-
-        const response = await Customer.create(customer)
-        if (response) {
-            return res.send({
-                status: true,
-                message: "Customer has been added"
-            })
-        } else {
-            return res.send({
-                status: false,
-                message: "Failed to add customer"
-            })
-        }
-
-    } catch (error) {
-        throw new Error(error)
+    const response = await Customer.create(customer);
+    if (response) {
+      return res.send({
+        status: true,
+        message: "Customer has been added",
+      });
+    } else {
+      return res.send({
+        status: false,
+        message: "Failed to add customer",
+      });
     }
-}
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export const deleteCustomer = async (req, res) => {
-    const { id } = req.params
-    if (!id){
-        return res.send({
-            status: false,
-            message: "ID not found!"
-        })
+  const { id } = req.params;
+  if (!id) {
+    return res.send({
+      status: false,
+      message: "ID not found!",
+    });
+  }
+  try {
+    const customer = await Customer.findByIdAndDelete({ _id: id });
+    if (!customer) {
+      return res.send({
+        status: false,
+        message: "Customer not found",
+      });
     }
-    try {
-        const customer = await Customer.findByIdAndDelete({_id: id})
-        if (!customer) {
-            return res.send({
-                status: false,
-                message: "Customer not found"
-            })
-        }
 
-        return res.send({
-            status: true, 
-            message: "Customer has been deleted!"
-        })
-
-    } catch (error) {
-        throw new Error(error)
-    }
-}
+    return res.send({
+      status: true,
+      message: "Customer has been deleted!",
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export const editCustomer = async (req, res) => {
-    const { id } = req.params
-    console.log(req)
-    if (!id){
-        return res.send({
-            status: false,
-            message: "ID not found!"
-        })
+  const { id } = req.params;
+  console.log(req);
+  if (!id) {
+    return res.send({
+      status: false,
+      message: "ID not found!",
+    });
+  }
+  try {
+    const customer = await Customer.findById({ _id: id });
+    if (!customer) {
+      return res.send({
+        status: false,
+        message: "Customer not found",
+      });
     }
-    try {
-        const customer = await Customer.findById({_id: id})
-        if (!customer) {
-            return res.send({
-                status: false,
-                message: "Customer not found"
-            })
-        }
 
-        return res.send({
-            status: true,
-            customer
-        })
+    return res.send({
+      status: true,
+      customer,
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
-    } catch (error) {
-        throw new Error(error)
+export const updateCustomer = async (req, res) => {
+  const customer = req.body;
+  if (!customer._id) {
+    return res.send({
+      status: false,
+      message: "ID not found!",
+    });
+  }
+  try {
+    const updatedCustomer = await Customer.findByIdAndUpdate({ _id: customer._id }, customer, {
+      new: true,
+    });
+    if (!updatedCustomer) {
+      return res.send({
+        status: false,
+        message: "Customer not found",
+      });
     }
-}
+
+    return res.send({
+      status: true,
+      message: "Customer updated successfull",
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+};

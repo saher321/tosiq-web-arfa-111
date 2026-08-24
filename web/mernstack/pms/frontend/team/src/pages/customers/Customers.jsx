@@ -22,8 +22,8 @@ const Customers = () => {
                 toast.error("No record were found")
             }
         } catch (error) {
-            throw new Error(error)
             toast.error("Internal server error")
+            throw new Error(error)
         }
     }
 
@@ -42,8 +42,8 @@ const Customers = () => {
                 toast.error(response.data.message)
             }
         } catch (error) {
-            throw new Error(error)
             toast.error("Internal server error")
+            throw new Error(error)
         }
     }
 
