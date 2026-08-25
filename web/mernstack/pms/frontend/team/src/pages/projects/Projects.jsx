@@ -2,7 +2,7 @@ import React from "react";
 import RoleBasedLayout from "../../layouts/RoleBasedLayout.jsx";
 import { NavigateLink } from "../../components/ComponentLib.jsx";
 import { useState } from "react";
-import { ALL_PRO_API, DEL_PRO_API } from "../../utils/api.js";
+import { ALL_CSTMR_API, ALL_PRO_API, DEL_PRO_API } from "../../utils/api.js";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useEffect } from "react";
@@ -16,7 +16,6 @@ const Projects = () => {
   const getAllProjects = async () => {
     try {
       const response = await axios.get(ALL_PRO_API);
-      console.log(response.data)
       if (response.data.status == true) {
         setProjects(response.data.projects);
       } else {
@@ -28,7 +27,7 @@ const Projects = () => {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleProjectDelete = async (id) => {
     if (!id) {
       toast.error("ID not found!");
       return;
@@ -50,6 +49,8 @@ const Projects = () => {
   useEffect(() => {
     getAllProjects();
   }, []);
+
+  
 
   return (
     <RoleBasedLayout>
@@ -112,7 +113,7 @@ const Projects = () => {
                       </td>
 
                       <td className="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
-                        {project.text ?? "No customer name assign"}
+                        { project.customerId ?? "Customer id not assigned"}
                       </td>
 
                       <td className="whitespace-nowrap px-6 py-4">
@@ -127,6 +128,10 @@ const Projects = () => {
                         {project.projectStatus == "active" ? (
                           <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
                             Active
+                          </span>
+                        ) : project.projectStatus == "pending" ? (
+                          <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-700">
+                            Proccessing
                           </span>
                         ) : project.projectStatus == "proccessing" ? (
                           <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700">
@@ -151,7 +156,7 @@ const Projects = () => {
 
                       <td className="whitespace-nowrap px-6 py-4">
                         <div className="flex gap-3">
-                          <Link onClick={() => handleDelete(project._id)}>
+                          <Link onClick={() => handleProjectDelete(project._id)}>
                             <Trash2
                               size={32}
                               className="rounded-lg text-purple-600 bg-gray-200 p-2"

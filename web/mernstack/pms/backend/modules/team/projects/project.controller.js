@@ -85,8 +85,8 @@ export const deleteProject = async (req, res) => {
     });
   }
   try {
-    const customer = await Project.findByIdAndDelete({ _id: id });
-    if (!customer) {
+    const project = await Project.findByIdAndDelete({ _id: id });
+    if (!project) {
       return res.send({
         status: false,
         message: "Project not found",
