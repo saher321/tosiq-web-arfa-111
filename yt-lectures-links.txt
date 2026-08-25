@@ -51,3 +51,6 @@
 
 24 August, 2026 (Project portion started)
 	- https://www.youtube.com/watch?v=b_QB9Pk5A3k
+
+25 August, 2026 (Project api, ui)
+	- https://www.youtube.com/watch?v=h7foBlTiJsQ

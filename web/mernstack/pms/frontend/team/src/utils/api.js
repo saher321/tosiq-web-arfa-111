@@ -14,13 +14,13 @@ export const DEL_CUST_API = BASE_URL_V1 + '/customers'
 export const EDT_CUST_API = BASE_URL_V1 + '/customers'
 export const UPT_CUST_API = BASE_URL_V1 + '/customers/update'
 
-// cusomters
+// projects
+export const ALL_CSTMR_API = BASE_URL_V1 + '/customers-data'
 export const ALL_PRO_API = BASE_URL_V1 + '/projects'
 export const ADD_PRO_API = BASE_URL_V1 + '/projects/add'
 export const DEL_PRO_API = BASE_URL_V1 + '/projects'
 export const EDT_PRO_API = BASE_URL_V1 + '/projects'
 export const UPT_PRO_API = BASE_URL_V1 + '/projects/update'
 
-// projects
 
 // tasks

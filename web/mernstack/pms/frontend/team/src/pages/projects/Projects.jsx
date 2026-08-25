@@ -16,7 +16,7 @@ const Projects = () => {
   const getAllProjects = async () => {
     try {
       const response = await axios.get(ALL_PRO_API);
-      console.log(response);
+      console.log(response.data)
       if (response.data.status == true) {
         setProjects(response.data.projects);
       } else {
@@ -108,11 +108,11 @@ const Projects = () => {
                   return (
                     <tr key={i} className="hover:bg-gray-50">
                       <td className="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
-                        {project.title}
+                        {project.projectTitle}
                       </td>
 
                       <td className="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
-                        {project.customerName ?? "No customer name assign"}
+                        {project.text ?? "No customer name assign"}
                       </td>
 
                       <td className="whitespace-nowrap px-6 py-4">

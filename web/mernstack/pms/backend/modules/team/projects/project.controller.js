@@ -1,4 +1,30 @@
 import Project from "./project.model.js";
+import Customer from "../customers/customer.model.js";
+
+export const customerData = async (req, res) => {
+  try {
+    const customerData = await Customer.find({}).select('_id fullName').lean();
+
+    const customers = customerData.map(({ _id, fullName }) => ({
+      id: _id,
+      text: fullName,
+    }));
+
+    if (customers.length > 0) {
+      return res.send({
+        status: true,
+        customers
+      })
+    } else {
+      return res.send({
+        status: true,
+        customers: []
+      })
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export const projects = async (req, res) => {
   try {
@@ -14,7 +40,8 @@ export const projects = async (req, res) => {
 };
 
 export const addProject = async (req, res) => {
-  const { projectTitle, customerId, startDate, deadLine, projectStatus } = req.body;
+  const { projectTitle, customerId, startDate, deadLine, projectStatus } =
+    req.body;
 
   if (!projectTitle || !customerId || !deadLine) {
     return res.send({
@@ -24,7 +51,6 @@ export const addProject = async (req, res) => {
   }
 
   try {
-    
     const project = {
       projectTitle,
       customerId,
@@ -112,9 +138,13 @@ export const updateProject = async (req, res) => {
     });
   }
   try {
-    const updatedProject = await Project.findByIdAndUpdate({ _id: customer._id }, customer, {
-      new: true,
-    });
+    const updatedProject = await Project.findByIdAndUpdate(
+      { _id: customer._id },
+      customer,
+      {
+        new: true,
+      },
+    );
     if (!updatedProject) {
       return res.send({
         status: false,
