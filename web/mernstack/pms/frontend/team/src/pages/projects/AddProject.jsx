@@ -92,7 +92,7 @@ const AddProject = () => {
               </div>
               <div className="col-span-6">
                 <label>Customer name</label>
-                <SelectInput {...register("customerId")} data={customers} />
+                <SelectInput {...register("customer")} data={customers} />
               </div>
               <div className="col-span-6">
                 <label>Start date</label>

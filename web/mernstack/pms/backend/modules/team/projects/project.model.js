@@ -7,10 +7,10 @@ const projectSchema = new mongoose.Schema(
       required: true,
       trim: true, // => John        Mathew :: John Mathew
     },
-    customerId: {
-      type: String,
+    customer: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Customer',
       required: true,
-      unique: true,
     },
     startDate: {
       type: Date,

@@ -28,7 +28,7 @@ export const customerData = async (req, res) => {
 
 export const projects = async (req, res) => {
   try {
-    const allProjects = await Project.find({});
+    const allProjects = await Project.find({}).populate('customer');
 
     return res.send({
       status: true,
@@ -40,10 +40,10 @@ export const projects = async (req, res) => {
 };
 
 export const addProject = async (req, res) => {
-  const { projectTitle, customerId, startDate, deadLine, projectStatus } =
+  const { projectTitle, customer, startDate, deadLine, projectStatus } =
     req.body;
 
-  if (!projectTitle || !customerId || !deadLine) {
+  if (!projectTitle || !customer || !deadLine) {
     return res.send({
       status: false,
       message: "Fill all the fields",
@@ -53,7 +53,7 @@ export const addProject = async (req, res) => {
   try {
     const project = {
       projectTitle,
-      customerId,
+      customer,
       startDate,
       deadLine,
       projectStatus,

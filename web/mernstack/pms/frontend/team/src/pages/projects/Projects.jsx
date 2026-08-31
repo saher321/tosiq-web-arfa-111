@@ -17,6 +17,7 @@ const Projects = () => {
     try {
       const response = await axios.get(ALL_PRO_API);
       if (response.data.status == true) {
+        console.log(response.data.projects);
         setProjects(response.data.projects);
       } else {
         toast.error("No record were found");
@@ -49,8 +50,6 @@ const Projects = () => {
   useEffect(() => {
     getAllProjects();
   }, []);
-
-  
 
   return (
     <RoleBasedLayout>
@@ -113,7 +112,7 @@ const Projects = () => {
                       </td>
 
                       <td className="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
-                        { project.customerId ?? "Customer id not assigned"}
+                        {project.customer?.fullName ?? "Customer id not assigned"}
                       </td>
 
                       <td className="whitespace-nowrap px-6 py-4">
@@ -156,7 +155,9 @@ const Projects = () => {
 
                       <td className="whitespace-nowrap px-6 py-4">
                         <div className="flex gap-3">
-                          <Link onClick={() => handleProjectDelete(project._id)}>
+                          <Link
+                            onClick={() => handleProjectDelete(project._id)}
+                          >
                             <Trash2
                               size={32}
                               className="rounded-lg text-purple-600 bg-gray-200 p-2"
