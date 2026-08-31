@@ -54,3 +54,6 @@
 
 25 August, 2026 (Project api, ui)
 	- https://www.youtube.com/watch?v=h7foBlTiJsQ
+
+31 August, 2026 (relation, Employees)
+	- https://www.youtube.com/watch?v=JN6v0RsDTaU
