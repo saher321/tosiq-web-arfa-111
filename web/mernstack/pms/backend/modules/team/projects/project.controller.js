@@ -3,7 +3,7 @@ import Customer from "../customers/customer.model.js";
 
 export const customerData = async (req, res) => {
   try {
-    const customerData = await Customer.find({}).select('_id fullName').lean();
+    const customerData = await Customer.find({}).select("_id fullName").lean();
 
     const customers = customerData.map(({ _id, fullName }) => ({
       id: _id,
@@ -13,13 +13,13 @@ export const customerData = async (req, res) => {
     if (customers.length > 0) {
       return res.send({
         status: true,
-        customers
-      })
+        customers,
+      });
     } else {
       return res.send({
         status: true,
-        customers: []
-      })
+        customers: [],
+      });
     }
   } catch (error) {
     throw new Error(error);
@@ -28,7 +28,7 @@ export const customerData = async (req, res) => {
 
 export const projects = async (req, res) => {
   try {
-    const allProjects = await Project.find({}).populate('customer');
+    const allProjects = await Project.find({}).populate("customer");
 
     return res.send({
       status: true,
@@ -40,7 +40,7 @@ export const projects = async (req, res) => {
 };
 
 export const addProject = async (req, res) => {
-  const { projectTitle, customer, startDate, deadLine, projectStatus } =
+  const { projectTitle, customer, startDate, deadLine, projectStatus, notes } =
     req.body;
 
   if (!projectTitle || !customer || !deadLine) {
@@ -57,6 +57,7 @@ export const addProject = async (req, res) => {
       startDate,
       deadLine,
       projectStatus,
+      notes
     };
 
     const response = await Project.create(project);
@@ -104,7 +105,6 @@ export const deleteProject = async (req, res) => {
 
 export const editProject = async (req, res) => {
   const { id } = req.params;
-  console.log(req);
   if (!id) {
     return res.send({
       status: false,
@@ -112,8 +112,8 @@ export const editProject = async (req, res) => {
     });
   }
   try {
-    const customer = await Project.findById({ _id: id });
-    if (!customer) {
+    const project = await Project.findById({ _id: id });
+    if (!project) {
       return res.send({
         status: false,
         message: "Project not found",
@@ -122,7 +122,7 @@ export const editProject = async (req, res) => {
 
     return res.send({
       status: true,
-      customer,
+      project,
     });
   } catch (error) {
     throw new Error(error);

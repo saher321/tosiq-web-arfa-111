@@ -13,6 +13,7 @@ import EditCustomer from "./pages/customers/EditCustomer";
 import CustomerDetails from "./pages/customers/CustomerDetails";
 import Projects from "./pages/projects/Projects";
 import AddProject from "./pages/projects/AddProject";
+import EditProject from "./pages/projects/EditProject";
 
 const App = () => {
   return (
@@ -37,7 +38,7 @@ const App = () => {
           {/* project routes */}
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/add" element={<AddProject />} />
-          <Route path="/projects/:id/edit" element={<EditCustomer />} />
+          <Route path="/projects/:id/edit" element={<EditProject />} />
           <Route path="/projects/:id/details" element={<CustomerDetails />} />
         </Route>
       </Routes>

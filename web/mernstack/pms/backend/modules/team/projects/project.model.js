@@ -14,8 +14,7 @@ const projectSchema = new mongoose.Schema(
     },
     startDate: {
       type: Date,
-      required: true,
-      default: Date.now
+      required: true
       // minlength: 5
     },
     deadLine: {
@@ -27,7 +26,8 @@ const projectSchema = new mongoose.Schema(
       type: String,
       enum: ['active', 'pending', 'proccessing', 'completed', 'cancelled'],
       default: 'active',
-    }
+    },
+    notes: { type: String }
   },
   { timestamps: true }
 );

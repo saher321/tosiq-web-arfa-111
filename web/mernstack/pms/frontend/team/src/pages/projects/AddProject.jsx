@@ -112,7 +112,7 @@ const AddProject = () => {
               <div className="col-span-12">
                 <label>Notes</label>
                 <InputField
-                  {...register("address")}
+                  {...register("notes")}
                   type="text"
                   hint="UI UX design provided"
                 />
