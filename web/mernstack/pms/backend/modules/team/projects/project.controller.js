@@ -120,8 +120,8 @@ export const editProject = async (req, res) => {
       });
     }
 
-    let sDate = project.startDate.toLocaleDateString();
-    let dLine = project.deadLine.toLocaleDateString();
+    let sDate = project.startDate.toISOString().split("T")[0];
+    let dLine = project.deadLine.toISOString().split("T")[0];
     const editedProject = {
       projectTitle: project.projectTitle,
       customer: project.customer,
@@ -141,8 +141,10 @@ export const editProject = async (req, res) => {
 };
 
 export const updateProject = async (req, res) => {
-  const customer = req.body;
-  if (!customer._id) {
+  const {projectTitle, deadLine} = req.body;
+  console.log(projectTitle)
+  return;
+  if (!project.id) {
     return res.send({
       status: false,
       message: "ID not found!",
@@ -150,11 +152,7 @@ export const updateProject = async (req, res) => {
   }
   try {
     const updatedProject = await Project.findByIdAndUpdate(
-      { _id: customer._id },
-      customer,
-      {
-        new: true,
-      },
+      { _id: project.id }, project, {new: true}
     );
     if (!updatedProject) {
       return res.send({

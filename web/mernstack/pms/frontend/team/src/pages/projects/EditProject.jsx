@@ -10,7 +10,7 @@ import { MoveLeft } from "lucide-react";
 import { projectStatuses as statuses } from "../../utils/common.js";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { ALL_CSTMR_API, EDT_PRO_API } from "../../utils/api.js";
+import { ALL_CSTMR_API, EDT_PRO_API, UPT_PRO_API } from "../../utils/api.js";
 import { useNavigate, useParams } from "react-router";
 import toast from "react-hot-toast";
 
@@ -36,10 +36,7 @@ const EditProject = () => {
     }
   };
 
-  useEffect(() => {
-    getAllCustomers();
-  }, []);
-
+  
   const handleGetProject = async (data) => {
     try {
       const response = await axios.get(`${EDT_PRO_API}/${params.id}/edit`);
@@ -54,6 +51,26 @@ const EditProject = () => {
       throw new Error(error);
     }
   };
+  
+  const handleUpdateProject = async (data) => {
+    try {
+      data = params.id
+      const response = await axios.patch(UPT_PRO_API, data);
+      if (response.data.status == true) {
+        toast.success(response.data.message);
+        navigate("/projects");
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error("Internal server error");
+      throw new Error(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllCustomers();
+  }, []);
 
   useEffect(() => {
     handleGetProject();
@@ -87,7 +104,7 @@ const EditProject = () => {
         </div>
 
         <div className="my-5 max-w-2xl">
-          <form>
+          <form onSubmit={handleSubmit(handleUpdateProject)}>
             <div className="grid grid-cols-12 gap-3">
               <div className="col-span-6">
                 <label>Project title</label>
@@ -126,7 +143,7 @@ const EditProject = () => {
               </div>
               <div className="col-span-12">
                 <Button
-                  title="Add project"
+                  title="Update project"
                   className="transition hover:bg-purple-700 hover:shadow-lg cursor-pointer text-center px-5 py-3 text-white rounded bg-purple-600 texzt-xl font-bold"
                 />
               </div>
