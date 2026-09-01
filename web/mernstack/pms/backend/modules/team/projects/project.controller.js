@@ -57,7 +57,7 @@ export const addProject = async (req, res) => {
       startDate,
       deadLine,
       projectStatus,
-      notes
+      notes,
     };
 
     const response = await Project.create(project);
@@ -120,9 +120,20 @@ export const editProject = async (req, res) => {
       });
     }
 
+    let sDate = project.startDate.toLocaleDateString();
+    let dLine = project.deadLine.toLocaleDateString();
+    const editedProject = {
+      projectTitle: project.projectTitle,
+      customer: project.customer,
+      startDate: sDate,
+      deadLine: dLine,
+      projectStatus: project.projectStatus,
+      notes: project.notes,
+    };
+
     return res.send({
       status: true,
-      project,
+      project: editedProject,
     });
   } catch (error) {
     throw new Error(error);
