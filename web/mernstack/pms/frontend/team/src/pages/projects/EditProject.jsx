@@ -36,7 +36,6 @@ const EditProject = () => {
     }
   };
 
-  
   const handleGetProject = async (data) => {
     try {
       const response = await axios.get(`${EDT_PRO_API}/${params.id}/edit`);
@@ -51,11 +50,20 @@ const EditProject = () => {
       throw new Error(error);
     }
   };
-  
+
   const handleUpdateProject = async (data) => {
     try {
-      data = params.id
-      const response = await axios.patch(UPT_PRO_API, data);
+      const newData = {
+        id: params.id,
+        projectTitle: data.projectTitle,
+        customer: data.customer,
+        startDate: data.startDate,
+        deadLine: data.deadLine,
+        projectStatus: data.projectStatus,
+        notes: data.notes,
+      };
+
+      const response = await axios.patch(UPT_PRO_API, newData);
       if (response.data.status == true) {
         toast.success(response.data.message);
         navigate("/projects");

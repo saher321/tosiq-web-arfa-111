@@ -141,9 +141,7 @@ export const editProject = async (req, res) => {
 };
 
 export const updateProject = async (req, res) => {
-  const {projectTitle, deadLine} = req.body;
-  console.log(projectTitle)
-  return;
+  const project = req.body
   if (!project.id) {
     return res.send({
       status: false,

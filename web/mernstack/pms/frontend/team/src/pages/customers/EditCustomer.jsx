@@ -116,7 +116,7 @@ const EditCustomer = () => {
               </div>
               <div className="col-span-12">
                 <Button
-                  title="Edit customer"
+                  title="Update customer"
                   className="transition hover:bg-purple-700 hover:shadow-lg cursor-pointer text-center px-5 py-3 text-white rounded bg-purple-600 texzt-xl font-bold"
                 />
               </div>
