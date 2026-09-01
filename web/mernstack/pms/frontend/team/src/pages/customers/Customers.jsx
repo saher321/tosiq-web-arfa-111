@@ -11,7 +11,7 @@ import {
   Link,
   UNSAFE_createClientRoutesWithHMRRevalidationOptOut,
 } from "react-router";
-import { SquarePen, Trash2 } from "lucide-react";
+import { Eye, SquarePen, Trash2 } from "lucide-react";
 
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
@@ -124,6 +124,12 @@ const Customers = () => {
 
                       <td className="whitespace-nowrap px-6 py-4">
                         <div className="flex gap-3">
+                          <Link to={`/customers/${customer._id}/details`}>
+                            <Eye
+                              size={32}
+                              className="rounded-lg text-purple-600 bg-gray-200 p-2"
+                            />
+                          </Link>
                           <Link onClick={() => handleDelete(customer._id)}>
                             <Trash2
                               size={32}
