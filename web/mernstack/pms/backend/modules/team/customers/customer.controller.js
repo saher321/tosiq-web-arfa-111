@@ -143,3 +143,8 @@ export const updateCustomer = async (req, res) => {
     throw new Error(error);
   }
 };
+
+export const viewCustomer = async (req, res) => {
+  const { id } = req.params
+  console.log("Customer ID:", id)
+}

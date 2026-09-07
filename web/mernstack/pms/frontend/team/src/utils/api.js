@@ -13,6 +13,7 @@ export const ADD_CUST_API = BASE_URL_V1 + "/customers/add";
 export const DEL_CUST_API = BASE_URL_V1 + "/customers";
 export const EDT_CUST_API = BASE_URL_V1 + "/customers";
 export const UPT_CUST_API = BASE_URL_V1 + "/customers/update";
+export const VIW_CUST_API = BASE_URL_V1 + "/customers";
 
 // projects
 export const ALL_CSTMR_API = BASE_URL_V1 + "/customers-data";

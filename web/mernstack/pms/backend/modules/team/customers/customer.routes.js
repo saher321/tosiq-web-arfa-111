@@ -5,6 +5,7 @@ import {
   deleteCustomer,
   editCustomer,
   updateCustomer,
+  viewCustomer,
 } from "./customer.controller.js";
 
 const customerRouter = express.Router();
@@ -15,5 +16,6 @@ customerRouter.post("/customers/add", addCustomer);
 customerRouter.delete("/customers/:id/delete", deleteCustomer);
 customerRouter.get("/customers/:id/edit", editCustomer);
 customerRouter.patch("/customers/update", updateCustomer);
+customerRouter.get("/customers/:id/details", viewCustomer);
 
 export default customerRouter;
