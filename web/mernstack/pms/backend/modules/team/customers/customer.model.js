@@ -21,7 +21,11 @@ const customerSchema = new mongoose.Schema(
       type: String,
       required: true,
       // minlength: 5
-    }
+    },
+    projects: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Project',
+    },
   },
   { timestamps: true }
 );

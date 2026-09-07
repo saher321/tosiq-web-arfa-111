@@ -1,4 +1,5 @@
 import { emailReg } from "../../../utils/common.js";
+import Project from "../projects/project.model.js";
 import Customer from "./customer.model.js";
 
 export const customers = async (req, res) => {
@@ -147,4 +148,40 @@ export const updateCustomer = async (req, res) => {
 export const viewCustomer = async (req, res) => {
   const { id } = req.params
   console.log("Customer ID:", id)
+
+  if (!id) {
+    return res.send({
+      status: false,
+      message: "ID not found"
+    })
+  }
+
+  try {
+    const customer = await Customer.findOne({_id: id})
+    const projects = await Project.find({customer: customer._id})
+    const singleCustomer = {
+      id: customer._id,
+      name: customer.fullName,
+      email: customer.email,
+      contact: customer.contact,
+      projects
+    }
+    
+    if (singleCustomer) {
+      return res.send({
+        status: true,
+        customer: singleCustomer
+      })
+    } else {
+      return res.send({
+        status: false,
+        message: "Customer not found"
+      })
+    }
+    
+  } catch (error) {
+    throw new Error(error)
+  }
+
+
 }

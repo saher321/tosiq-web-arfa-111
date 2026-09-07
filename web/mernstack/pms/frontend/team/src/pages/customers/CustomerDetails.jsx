@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import RoleBasedLayout from "../../layouts/RoleBasedLayout.jsx";
 import { NavigateLink } from "../../components/ComponentLib.jsx";
 import { MoveLeft, UserRound } from "lucide-react";
@@ -7,6 +7,7 @@ import axios from "axios";
 import { VIW_CUST_API } from "../../utils/api.js";
 
 const CustomerDetails = () => {
+  const [ customer, setCustomer ] = useState({})
   const params = useParams()
 
   const getCustomerDetails = async () => {
@@ -14,6 +15,7 @@ const CustomerDetails = () => {
       const response = await axios.get(`${VIW_CUST_API}/${params.id}/details`)
       if (response.data.status == true) {
         console.log(response.data)
+        setCustomer(response.data.customer)
       } 
     } catch (error) {
       throw new Error(error)
@@ -23,7 +25,7 @@ const CustomerDetails = () => {
   useEffect(() => {
     getCustomerDetails()
   }, [params.id])
-  
+
   return (
     <RoleBasedLayout>
       <div>
@@ -41,17 +43,28 @@ const CustomerDetails = () => {
               <UserRound size={44} className="mt-[1px]" />
             </div>
             <div>
-              <h2 className="font-bold text-2xl">Name [{params.id}]</h2>
-              <span className="text-gray-500">email</span>
+              <h2 className="font-bold text-2xl">{customer.name}</h2>
+              <span className="text-gray-500">{customer.email}</span>
             </div>
           </div>
-          <div className="text-gray-500">Contact</div>
+          <div className="text-gray-500">{customer.contact}</div>
         </div>
       </div>
       <div className="bg-white p-5 rounded-lg shadow">
         <span className="font-bold border-b border-b-gray-200 mb-2 pb-2 block">
-          Customer Projects
+          Projects
         </span>
+
+        <div className="grid grid-cols-12 gap-5">
+          { customer?.projects?.length == 0 ? <div className="col-span-12 text-gray-500 italic text-sm">No projects were found</div> :
+            customer?.projects?.map((project, i) => {
+            return (
+              <div key={i} className="col-span-3">
+                <div>{project.projectTitle}</div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </RoleBasedLayout>
   );
