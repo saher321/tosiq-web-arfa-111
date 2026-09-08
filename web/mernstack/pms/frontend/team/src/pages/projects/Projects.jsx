@@ -130,7 +130,7 @@ const Projects = () => {
                           </span>
                         ) : project.projectStatus == "pending" ? (
                           <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-700">
-                            Proccessing
+                            Pending
                           </span>
                         ) : project.projectStatus == "proccessing" ? (
                           <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700">

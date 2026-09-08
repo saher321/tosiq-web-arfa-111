@@ -5,6 +5,7 @@ import { MoveLeft, UserRound } from "lucide-react";
 import { useParams } from "react-router";
 import axios from "axios";
 import { VIW_CUST_API } from "../../utils/api.js";
+import ProjectItem from "../../components/projects/ProjectItem.jsx";
 
 const CustomerDetails = () => {
   const [ customer, setCustomer ] = useState({})
@@ -51,7 +52,7 @@ const CustomerDetails = () => {
         </div>
       </div>
       <div className="bg-white p-5 rounded-lg shadow">
-        <span className="font-bold border-b border-b-gray-200 mb-2 pb-2 block">
+        <span className="font-bold border-b border-b-gray-200 mb-5 pb-2 block">
           Projects
         </span>
 
@@ -59,8 +60,8 @@ const CustomerDetails = () => {
           { customer?.projects?.length == 0 ? <div className="col-span-12 text-gray-500 italic text-sm">No projects were found</div> :
             customer?.projects?.map((project, i) => {
             return (
-              <div key={i} className="col-span-3">
-                <div>{project.projectTitle}</div>
+              <div key={i} className="col-span-4">
+                <ProjectItem project={project}/>
               </div>
             )
           })}

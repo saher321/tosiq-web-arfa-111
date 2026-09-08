@@ -63,3 +63,6 @@
 
 7 Sep , 2026 (customer details with its projects)
 	- https://www.youtube.com/watch?v=VJ8PWoHb0N0
+
+8 Sep, 2026 (project card ui, employee ui)
+	- https://www.youtube.com/watch?v=TBGnO6sXOWI
