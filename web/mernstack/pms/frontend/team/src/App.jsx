@@ -14,6 +14,7 @@ import CustomerDetails from "./pages/customers/CustomerDetails";
 import Projects from "./pages/projects/Projects";
 import AddProject from "./pages/projects/AddProject";
 import EditProject from "./pages/projects/EditProject";
+import Employees from "./pages/employees/Employees";
 
 const App = () => {
   return (
@@ -40,6 +41,10 @@ const App = () => {
           <Route path="/projects/add" element={<AddProject />} />
           <Route path="/projects/:id/edit" element={<EditProject />} />
           <Route path="/projects/:id/details" element={<CustomerDetails />} />
+
+          {/* employee routes */}
+          <Route path="/employees" element={<Employees />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
@@ -47,3 +52,4 @@ const App = () => {
 };
 
 export default App;
+

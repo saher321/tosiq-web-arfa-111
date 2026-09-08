@@ -2,7 +2,7 @@ import React from "react";
 import RoleBasedLayout from "../../layouts/RoleBasedLayout.jsx";
 import { Button, NavigateLink } from "../../components/ComponentLib.jsx";
 import { useState } from "react";
-import { ALL_CUST_API, DEL_CUST_API } from "../../utils/api.js";
+import { ALL_EMP_API } from "../../utils/api.js";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useEffect } from "react";
@@ -10,14 +10,14 @@ import moment from "moment";
 import { Link } from "react-router";
 import { Eye, SquarePen, Trash2 } from "lucide-react";
 
-const Customers = () => {
-  const [customers, setCustomers] = useState([]);
+const Employees = () => {
+  const [employees, setEmployees] = useState([]);
 
-  const getAllCustomers = async () => {
+  const getAllEmployees = async () => {
     try {
-      const response = await axios.get(ALL_CUST_API);
+      const response = await axios.get(ALL_EMP_API);
       if (response.data.status == true) {
-        setCustomers(response.data.customers);
+        setEmployees(response.data.employees);
       } else {
         toast.error("No record were found");
       }
@@ -27,27 +27,8 @@ const Customers = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!id) {
-      toast.error("ID not found!");
-      return;
-    }
-    try {
-      const response = await axios.delete(`${DEL_CUST_API}/${id}/delete`);
-      if (response.data.status == true) {
-        toast.success(response.data.message);
-        await getAllCustomers();
-      } else {
-        toast.error(response.data.message);
-      }
-    } catch (error) {
-      toast.error("Internal server error");
-      throw new Error(error);
-    }
-  };
-
   useEffect(() => {
-    getAllCustomers();
+    getAllEmployees();
   }, []);
 
   return (
@@ -55,16 +36,16 @@ const Customers = () => {
       <div className="bg-white p-3 rounded-lg">
         <div className="my-3 flex items-center justify-between">
           <div>
-            <h1 className="font-bold text-[18px]">Customer List</h1>
+            <h1 className="font-bold text-[18px]">Employee List</h1>
           </div>
-          <div>
+          {/* <div>
             <NavigateLink
-              url="/customers/add"
+              url="/employees/add"
               className="transition hover:bg-purple-700 hover:shadow-lg cursor-pointer text-center px-5 py-3 text-white rounded bg-purple-600 texzt-xl font-bold"
             >
-              Add customer
+              Add employee
             </NavigateLink>
-          </div>
+          </div> */}
         </div>
 
         <div className="my-5 w-full overflow-x-auto rounded-lg shadow">
@@ -78,12 +59,6 @@ const Customers = () => {
                   Email
                 </th>
                 <th scope="col" className="px-6 py-4">
-                  Contact
-                </th>
-                <th scope="col" className="px-6 py-4">
-                  Address
-                </th>
-                <th scope="col" className="px-6 py-4">
                   Created At
                 </th>
                 <th scope="col" className="px-6 py-4">
@@ -93,52 +68,46 @@ const Customers = () => {
             </thead>
 
             <tbody className="divide-y divide-gray-200 bg-white">
-              {customers.length == 0 ? (
+              {employees.length == 0 ? (
                 <tr>
                   <td className="px-6 py-4" colSpan={7}>
-                    No customer were found
+                    No employee were found
                   </td>
                 </tr>
               ) : (
-                customers.map((customer, i) => {
+                employees.map((employee, i) => {
                   return (
                     <tr key={i} className="hover:bg-gray-50">
                       <td className="whitespace-nowrap px-6 py-4 font-medium text-gray-900">
-                        {customer.fullName}
+                        {employee.fullName}
                       </td>
 
-                      <td className="px-6 py-4">{customer.email}</td>
-
-                      <td className="px-6 py-4">{customer.contact}</td>
-
-                      <td className="text-wrap whitespace-nowrap px-6 py-4">
-                        <span className="block w-[140px] truncate">{customer.address}</span>
-                      </td>
+                      <td className="px-6 py-4">{employee.email}</td>
 
                       <td className="whitespace-nowrap px-6 py-4">
-                        {moment(customer.createdAt).format("LL")}
+                        {moment(employee.createdAt).format("LL")}
                       </td>
 
                       <td className="whitespace-nowrap px-6 py-4">
                         <div className="flex gap-3">
-                          <Link to={`/customers/${customer._id}/details`}>
+                          <Link to={`/employees/${employee._id}/details`}>
                             <Eye
                               size={32}
                               className="rounded-lg text-purple-600 bg-gray-200 p-2"
                             />
                           </Link>
-                          <Link onClick={() => handleDelete(customer._id)}>
+                          {/* <Link onClick={() => handleDelete(employee._id)}>
                             <Trash2
                               size={32}
                               className="rounded-lg text-purple-600 bg-gray-200 p-2"
                             />
                           </Link>
-                          <Link to={`/customers/${customer._id}/edit`}>
+                          <Link to={`/employees/${employee._id}/edit`}>
                             <SquarePen
                               size={32}
                               className="rounded-lg text-purple-600 bg-gray-200 p-2"
                             />
-                          </Link>
+                          </Link> */}
                         </div>
                       </td>
                     </tr>
@@ -153,4 +122,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Employees;

@@ -5,6 +5,7 @@ import { connectDB } from './config/db.js'
 import userRouter from './modules/auth/user.routes.js'
 import customerRouter from './modules/team/customers/customer.routes.js'
 import projectRouter from './modules/team/projects/project.routes.js'
+import employeesRouter from './modules/team/employees/employee.routes.js'
 
 const app = express()
 const PORT= process.env.PORT || 5000
@@ -34,6 +35,9 @@ app.use(PREFIX, customerRouter)
 
 // projects
 app.use(PREFIX, projectRouter)
+
+// employees
+app.use(PREFIX, employeesRouter)
 
 
 connectDB().then(() => {

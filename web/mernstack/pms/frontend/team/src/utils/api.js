@@ -23,4 +23,7 @@ export const DEL_PRO_API = BASE_URL_V1 + "/projects";
 export const EDT_PRO_API = BASE_URL_V1 + "/projects";
 export const UPT_PRO_API = BASE_URL_V1 + "/projects/update";
 
+// employees
+export const ALL_EMP_API = BASE_URL_V1 + "/employees";
+
 // tasks
