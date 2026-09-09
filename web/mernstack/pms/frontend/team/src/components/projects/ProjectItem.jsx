@@ -47,7 +47,7 @@ const ProjectItem = ({ project }) => {
 
       <div className="text-gray-500 font-bold flex items-center justify-end gap-2">
         <AlarmClockMinus size={20} />
-        <span className="italic">{moment(project.startDate).format("ll")}</span>
+        <span className="italic">{moment(project.deadLine).format("ll")}</span>
       </div>
     </div>
   );

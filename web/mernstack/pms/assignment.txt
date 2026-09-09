@@ -1,0 +1,14 @@
+Inventory store
+
+1- Login
+    username/email, password
+2- Signup
+    full name, username, email, password
+3- Forgot password
+    username/email
+4- Reset Password
+    username/email, OTP, new password
+5- Product category
+    name
+6- Products
+    name, category, price, stock, description
